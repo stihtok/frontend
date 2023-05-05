@@ -1,0 +1,23 @@
+name: Deploy dev
+on:
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repo's default branch
+        uses: actions/checkout@main
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19.x'
+      - run: npm install
+        working-directory: "./frontend"
+      - run: npm run build || true
+        working-directory: "./frontend"
+      - run: rsync -aI build/* /opt/dev/frontend/
+        working-directory: "./frontend"

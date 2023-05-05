@@ -1,0 +1,12 @@
+.authorStihList {
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+.authorStihTitle a {
+    font-family: Arsenal;
+    color: #000;
+    text-decoration-style: dotted;
+    font-size: 1.3em;
+}
+

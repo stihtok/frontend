@@ -1,0 +1,17 @@
+.filter {
+    font-family: Arsenal;
+    width: 100%;
+    border: 1px solid #c6c4c4;
+    border-radius: 15px;
+    min-height: 35px;
+    padding-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    color: #3f3f3f;
+}
+.filterDiv {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 300px;
+}

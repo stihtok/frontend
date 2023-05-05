@@ -1,0 +1,19 @@
+.title {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: Arsenal;
+}
+
+.title a {
+    text-decoration: none;
+    color: #000;
+}
+
+.title a:hover {
+    color:#000000;
+    text-decoration: underline;
+}

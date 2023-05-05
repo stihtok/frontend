@@ -1,0 +1,15 @@
+.date {
+  color: #989898;
+  padding-left: 10px;
+  scroll-snap-stop: always;
+}
+
+.date a {
+  color: #000;
+  text-decoration: none;
+}
+
+.date a:hover {
+  color: #000;
+  text-decoration: underline;
+}

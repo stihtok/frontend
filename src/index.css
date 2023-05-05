@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "NotoSerif";
+  src: local("NotoSerif"), url(./components/fonts/NotoSerif-Regular.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "Cormorant";
+  src: local("Cormorant-Medium"), url(./components/fonts/Cormorant-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: local("Cormorant-Bold"), url(./components/fonts/Cormorant-Bold.ttf) format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Arsenal";
+  src: local("Arsenal-Bold"), url(./components/fonts/Arsenal-Bold.ttf) format("truetype");
+  font-weight: bold;
+
+}
+@font-face {
+  font-family: "Arsenal";
+  src: local("Arsenal-Regular"), url(./components/fonts/Arsenal-Regular.ttf) format("truetype");
+}
+
+
+
+@font-face {
+  font-family: "NotoSerif";
+  src: local("NotoSerif"), url(./components/fonts/NotoSerif-Italic.ttf) format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NotoSerif";
+  src: local("NotoSerif"), url(./components/fonts/NotoSerif-Bold.ttf) format("truetype");
+  font-weight: bold;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+ 
+}
+

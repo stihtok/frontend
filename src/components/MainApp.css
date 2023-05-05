@@ -1,0 +1,19 @@
+.App {
+  height: 100vh;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+}
+
+.backButton {
+  position: absolute;
+  left: 5px;
+  top: 20px;
+  width: 25px;
+  opacity: 40%;
+  z-index: 1;
+}
+
+.backButton:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,21 @@
+.author {
+  text-align: center;
+  font-family: Cormorant;
+}
+
+.author a {
+  text-decoration: none;
+  color: #000;
+}
+
+.author a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+
+.authorImg {
+  border-radius: 50%;
+  width: 50px;
+  padding-bottom: 5px;
+}
