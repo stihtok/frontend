@@ -19,7 +19,7 @@ function AuthorStihList(props) {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("http://192.168.1.201:8000/api/author/" + authorId + "/all")
+    axios.get("/api/author/" + authorId + "/all")
     .then((response) => {
       setStihs(response.data);
     })

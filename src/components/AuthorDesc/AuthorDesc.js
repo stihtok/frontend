@@ -5,7 +5,7 @@ function AuthorDesc(props) {
     <div className="authorDesc">
       <img
         className="authorDescImg"
-        src={"http://192.168.1.201:8000" + props.photo}
+        src={"" + props.photo}
       />
       <p>{props.name}</p>
     </div>

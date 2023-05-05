@@ -7,7 +7,7 @@ function Author(props) {
       <NavLink to={"/author/" + props.id}>
         <img
           className="authorImg"
-          src={"http://192.168.1.201:8000" + props.authorImg}
+          src={"" + props.authorImg}
         />
         <p>{props.author}</p>
       </NavLink>

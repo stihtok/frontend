@@ -18,7 +18,7 @@ function SinglePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("http://192.168.1.201:8000/api/stih/" + stihId)
+    axios.get("/api/stih/" + stihId)
     .then((response) => {
       setStih(response.data);
     })

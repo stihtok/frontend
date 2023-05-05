@@ -14,7 +14,7 @@ function MainApp() {
   let observerLoader = useRef();
 
   const addStihsToBundle = () => {
-    axios.get("http://192.168.1.201:8000/api/bundle/").then((response) => {
+    axios.get("/api/bundle/").then((response) => {
       let newBundle = []
       newBundle = [...bundle, ...response.data,];
       setBundle(newBundle);
@@ -28,7 +28,7 @@ function MainApp() {
   };
 
   useEffect(() => {
-    axios.get("http://192.168.1.201:8000/api/bundle/").then((response) => {
+    axios.get("/api/bundle/").then((response) => {
       setBundle(response.data);
     });
   }, []);

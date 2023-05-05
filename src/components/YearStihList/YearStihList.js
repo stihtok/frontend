@@ -9,7 +9,7 @@ function YearStihList(props) {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("http://192.168.1.201:8000/api/year/" +  props.year + "/all")
+    axios.get("/api/year/" +  props.year + "/all")
     .then((response) => {
       setAuthors(response.data);
     })
