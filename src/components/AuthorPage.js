@@ -18,7 +18,7 @@ function AuthorPage() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://192.168.1.201:8000/api/author/" + authorId)
+      .get("/api/author/" + authorId)
       .then((response) => {
         setAuthor(response.data);
       })
