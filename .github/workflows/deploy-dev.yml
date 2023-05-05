@@ -16,8 +16,5 @@ jobs:
         with:
           node-version: '19.x'
       - run: npm install
-        working-directory: "./frontend"
       - run: npm run build || true
-        working-directory: "./frontend"
       - run: rsync -aI build/* /opt/dev/frontend/
-        working-directory: "./frontend"
