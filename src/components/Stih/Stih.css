@@ -5,6 +5,6 @@
   padding-bottom: 20vh;
   scroll-snap-align: start;
   scroll-margin-bottom: 40vh;
-  -webkit-overflow-scrolling: touch;
+  --webkit-overflow-scrolling: touch;
   font-family: NotoSerif, serif;
 }
