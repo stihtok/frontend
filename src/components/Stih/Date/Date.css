@@ -5,8 +5,9 @@
 }
 
 .date a {
-  color: #000;
   text-decoration: none;
+  color:#989898;
+  font-style: italic;
 }
 
 .date a:hover {
