@@ -5,6 +5,10 @@
   scroll-snap-type: y mandatory;
 }
 
+.Single {
+  --webkit-overflow-scrolling: touch;
+}
+
 .backButton {
   position: absolute;
   left: 5px;

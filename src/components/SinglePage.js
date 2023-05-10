@@ -27,7 +27,7 @@ function SinglePage() {
 
 
   return (
-    <div className="App">
+    <div className="Single">
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs="auto">
