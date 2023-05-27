@@ -3,10 +3,13 @@
   overflow: scroll;
   --webkit-overflow-scrolling: touch;
   scroll-snap-type: y mandatory;
+  padding-bottom: 100px;
 }
 
 .Single {
   --webkit-overflow-scrolling: touch;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .backButton {

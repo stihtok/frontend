@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { createRef, useRef } from "react";
+import Navigation from "./Parts/Navigation";
 
 function MainApp() {
   let [bundle, setBundle] = useState([]);
@@ -46,6 +47,7 @@ function MainApp() {
 
   return (
     <div className="App">
+      <Navigation />
       <Container fluid>
         {bundle.map((stih, index) => {
           if (index + 1 === bundle.lenght) {

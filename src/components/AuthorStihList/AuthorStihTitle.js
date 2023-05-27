@@ -1,7 +1,4 @@
 import "./AuthorStihList.css";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 
 function AuthorStihTitle(props) {

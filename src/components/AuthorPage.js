@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
+import Navigation from "./Parts/Navigation";
 
 function AuthorPage() {
   let { authorId } = useParams();
@@ -31,7 +32,8 @@ function AuthorPage() {
         <Row className="justify-content-center">
           <Col xs="auto">
             <BackButton />
-            <AuthorDesc photo={author.photo} name={author.name}/>
+            <Navigation />
+            <AuthorDesc photo={author.photo} name={author.name} id={author.id}/>
             <AuthorStihList />
           </Col>
         </Row>

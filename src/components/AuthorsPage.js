@@ -1,44 +1,44 @@
 import "./MainApp.css";
 import { useState, useEffect } from "react";
-import Stih from "./Stih/Stih";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Loading from "./Loading";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import Navigation from "./Parts/Navigation";
+import AuthorDesc from "./AuthorDesc/AuthorDesc"
 
-function SinglePage() {
-
-  let { stihId } = useParams()
-  let [stih, setStih] = useState(null);
+function AuthorsPage() {
+  let [authors, setAuthors] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("/api/stih/" + stihId)
-    .then((response) => {
-      setStih(response.data);
-    })
-    .finally(() => setIsLoading(false)); ;
+    axios
+      .get("/api/authors/")
+      .then((response) => {
+        setAuthors(response.data);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
-
   return (
-    <div className="Single">
-      <Navigation />
+    <div className="App">
       <Container fluid>
+      <Navigation />
+      <BackButton />
         <Row className="justify-content-center">
           <Col xs="auto">
-            <BackButton />
-            {isLoading ? <Loading /> : <Stih stih={stih} />}</Col>
+            {authors.map((author, id) => {
+              return <AuthorDesc name={author.name} photo={author.photo} id={author.id}/>
+            })
+          }
+          </Col>
         </Row>
       </Container>
     </div>
   );
 }
 
-export default SinglePage;
+export default AuthorsPage;

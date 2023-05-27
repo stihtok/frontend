@@ -7,6 +7,7 @@ import ErrorPage from "./components/error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthorPage from "./components/AuthorPage";
 import YearPage from "./components/YearPage";
+import AuthorsPage from "./components/AuthorsPage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
   {
     path: "/year/:year",
     element: <YearPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/authors",
+    element: <AuthorsPage />,
     errorElement: <ErrorPage />,
   },
 ]);
