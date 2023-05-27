@@ -1,7 +1,7 @@
 #menuToggle
 {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 15px;
   right: 0px;
   z-index: 1;
