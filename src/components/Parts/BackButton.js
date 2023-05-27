@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import './MainApp.css';
-import back from './img/back.png';
+import './BackButton.css';
+import back from '../img/back.png';
 
 
 function BackButton() {

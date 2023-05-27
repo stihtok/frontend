@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import YearStihList from "./YearStihList/YearStihList";
 import Year from "./YearStihList/Year";
-import BackButton from "./BackButton";
+import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 
 

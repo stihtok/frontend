@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import BackButton from "./BackButton";
+import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import AuthorDesc from "./AuthorDesc/AuthorDesc"
 

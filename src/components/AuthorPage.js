@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import BackButton from "./BackButton";
+import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 
 function AuthorPage() {
