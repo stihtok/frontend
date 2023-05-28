@@ -6,7 +6,9 @@ import back from '../img/back.png';
 function BackButton() {
     let navigate = useNavigate();
     return (
-        <img src={back} className="backButton" onClick={() => navigate(-1)} />
+        <div className="backArea" onClick={() => navigate(-1)}>
+            <img src={back} className="backButton" />
+        </div>
     )
 }
 
