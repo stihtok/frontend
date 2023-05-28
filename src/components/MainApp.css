@@ -24,3 +24,7 @@
 .backButton:hover {
   cursor: pointer;
 }
+
+.center {
+  text-align: center;
+}

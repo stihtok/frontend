@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthorPage from "./components/AuthorPage";
 import YearPage from "./components/YearPage";
 import AuthorsPage from "./components/AuthorsPage";
+import AuthorFeedPage from "./components/AuthorFeedPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
   {
     path: "/author/:authorId",
     element: <AuthorPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/author/:authorId/feed",
+    element: <AuthorFeedPage />,
     errorElement: <ErrorPage />,
   },
   {

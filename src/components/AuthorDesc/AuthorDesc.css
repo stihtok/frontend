@@ -3,6 +3,14 @@
     text-align: center;
     font-family: Cormorant;
     font-size: 2.3em;
+    margin-bottom: 40px;
+}
+
+.descText {
+    font-size: 14px;
+    color: #656565;
+    font-family: NotoSerif, serif;
+    margin-bottom: 40px;
 }
 
 .authorDesc a {
@@ -14,8 +22,12 @@
     text-decoration: underline;
 }
 
+.authorDesc p {
+    margin-bottom: 10px;
+}
+
 .authorDescImg {
     width: 200px;
     border-radius: 50%;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }

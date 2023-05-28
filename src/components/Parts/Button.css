@@ -1,0 +1,31 @@
+.button {
+    background-color: #efefef;
+    border: 2px solid #efefef;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    min-height: 35px;
+}
+
+.button:hover {
+    background-color: #dbdbdb;
+    text-decoration: none;
+    border: 2px solid #dbdbdb;
+    color: #000000;
+}
+
+.button:focus {
+    outline: 0;
+}

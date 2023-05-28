@@ -3,10 +3,23 @@
     padding-left: 10px;
 }
 
+.authorStihTitle {
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+
 .authorStihTitle a {
     font-family: Arsenal;
     color: #000;
     text-decoration-style: dotted;
     font-size: 1.3em;
+    overflow: hidden;
 }
 
+
+.authorStihTitle p {
+    display: inline
+}

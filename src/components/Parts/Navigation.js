@@ -5,7 +5,7 @@ function Navigation(props) {
     return (
         <nav role="navigation">
         <div id="menuToggle">
-            <input type="checkbox" autocomplete='off'/>
+            <input type="checkbox" autoComplete='off'/>
             
             <span></span>
             <span></span>

@@ -10,19 +10,19 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
-import Button from "./Parts/Button";
+import Stih from "./Stih/Stih";
 
-function AuthorPage() {
+function AuthorFeedPage() {
   let { authorId } = useParams();
-  let [author, setAuthor] = useState({});
+  let [authorStihs, setAuthorStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("/api/author/" + authorId)
+      .get("/api/author/" + authorId + "/all")
       .then((response) => {
-        setAuthor(response.data);
+        setAuthorStihs(response.data);
       })
       .finally(() => setIsLoading(false));
   }, []);
@@ -31,12 +31,18 @@ function AuthorPage() {
     <div className="App">
       <Container fluid>
         <Row className="justify-content-center">
-          <Col xs="auto" xl="4">
+          <Col xs="auto">
             <BackButton />
             <Navigation />
-            <AuthorDesc description={author.description} photo={author.photo} name={author.name} id={author.id}/>
-            <div className="center"><Button href={"/author/" + author.id + "/feed"} text="Читать лентой" /></div>
-            <AuthorStihList />
+            {authorStihs.map((stih, id) => {
+              return (
+                <Row className="justify-content-center">
+                  <Col xs="auto">
+                    <Stih stih={stih} />
+                  </Col>
+                </Row>
+              )
+            })}
           </Col>
         </Row>
 
@@ -55,4 +61,4 @@ function AuthorPage() {
   );
 }
 
-export default AuthorPage;
+export default AuthorFeedPage;

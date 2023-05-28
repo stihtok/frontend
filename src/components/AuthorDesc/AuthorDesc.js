@@ -10,6 +10,7 @@ function AuthorDesc(props) {
       />
       <p>{props.name}</p>
       </a>
+      <p className="descText">{props.description}</p>
     </div>
   );
 }
