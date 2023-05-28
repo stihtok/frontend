@@ -34,7 +34,7 @@ function AuthorPage() {
           <Col xs="auto" xl="4">
             <BackButton />
             <Navigation />
-            <AuthorDesc description={author.description} photo={author.photo} name={author.name} id={author.id}/>
+            <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>
             <div className="center"><Button href={"/author/" + author.id + "/feed"} text="Читать лентой" /></div>
             <AuthorStihList />
           </Col>
