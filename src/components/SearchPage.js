@@ -1,42 +1,47 @@
 import "./MainApp.css";
 import { useState, useEffect } from "react";
-import AuthorDesc from "./AuthorDesc/AuthorDesc";
-import AuthorStihList from "./AuthorStihList/AuthorStihList";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
-import Button from "./Parts/Button";
+import Stih from "./Stih/Stih";
+import "./SearchPage.css";
 
-function AuthorPage() {
-  let { authorId } = useParams();
-  let [author, setAuthor] = useState({});
+function AuthorFeedPage() {
+  let [searchQuery] = useSearchParams();
+  let [searchStihs, setSearchStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("/api/author/" + authorId)
+      .get("/api/search/" + searchQuery.get('q'))
       .then((response) => {
-        setAuthor(response.data);
+        setSearchStihs(response.data);
       })
       .finally(() => setIsLoading(false));
   }, []);
-
   return (
     <div className="App">
       <Container fluid>
         <Row className="justify-content-center">
-          <Col xs="auto" md="5" lg="4" xl="3">
+          <Col xs="auto">
             <BackButton />
             <Navigation />
-            <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>
-            <div className="center"><Button href={"/author/" + author.id + "/feed"} text="Читать лентой" /></div>
-            <AuthorStihList />
+            <div className="searchQuery center"><h2>Поиск:  '{searchQuery.get('q')}'</h2></div>
+            {searchStihs.map((stih, id) => {
+              return (
+                <Row className="justify-content-center">
+                  <Col xs="auto">
+                    <Stih stih={stih} />
+                  </Col>
+                </Row>
+              )
+            })}
           </Col>
         </Row>
       </Container>
@@ -44,4 +49,4 @@ function AuthorPage() {
   );
 }
 
-export default AuthorPage;
+export default AuthorFeedPage;

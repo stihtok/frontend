@@ -2,8 +2,15 @@ import './Filter.css';
 
 
 function Filter(props) {
+    if (props.onChangeFunc) {
+        return (
+            <input name="q" type="text" className='filter' placeholder='Поиск' onChange={props.onChangeFunc}/>
+        )
+    }
     return (
-        <input className='filter' placeholder='Поиск' onChange={props.onChangeFunc}/>
+        <form action="/search" method="GET">
+            <input name="q" type="text" className='filter' placeholder='Поиск' onChange={props.onChangeFunc}/>
+        </form>
     )
 }
 

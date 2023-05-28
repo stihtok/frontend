@@ -22,7 +22,7 @@
   color: tomato;
 }
 
-#menuToggle input
+#menuToggle input[type="checkbox"]
 {
   display: block;
   width: 50px;
@@ -90,7 +90,7 @@
   right: 0px;
   top: 0px;
   padding: 50px;
-  padding-top: 125px;
+  padding-top: 85px;
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;

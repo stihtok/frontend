@@ -9,6 +9,7 @@ import AuthorPage from "./components/AuthorPage";
 import YearPage from "./components/YearPage";
 import AuthorsPage from "./components/AuthorsPage";
 import AuthorFeedPage from "./components/AuthorFeedPage";
+import SearchPage from "./components/SearchPage"
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
   {
     path: "/authors",
     element: <AuthorsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/search/",
+    element: <SearchPage />,
     errorElement: <ErrorPage />,
   },
 ]);

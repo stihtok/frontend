@@ -1,0 +1,10 @@
+.searchQuery {
+  scroll-snap-align: start;
+  padding-bottom: 30px;
+  padding-top: 40px;
+}
+
+.searchQuery h2 {
+  font-family: Cormorant;
+  font-size: 3em;
+}
