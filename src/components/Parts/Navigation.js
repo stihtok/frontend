@@ -1,5 +1,5 @@
 import './Navigation.css';
-import Filter from './Filter';
+import Search from './Search';
 
 
 function Navigation(props) {
@@ -13,7 +13,7 @@ function Navigation(props) {
             <span></span>
             
             <ul id="menu">
-            <li style={{marginBottom: "40px"}}><Filter /></li>
+            <li style={{marginBottom: "40px"}}><Search /></li>
             <a href="/"><li>Главная</li></a>
             <a href="/authors"><li>Авторы</li></a>
 

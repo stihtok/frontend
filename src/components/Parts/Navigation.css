@@ -89,7 +89,7 @@
   width: 300px;
   right: 0px;
   top: 0px;
-  padding: 50px;
+  padding: 35px;
   padding-top: 85px;
   background: #ededed;
   list-style-type: none;
@@ -103,6 +103,7 @@
 {
   padding: 10px 0;
   font-size: 22px;
+  transition: all 0.1s ease;
 }
 
 #menuToggle input:checked ~ ul

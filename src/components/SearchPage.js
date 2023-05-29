@@ -32,7 +32,7 @@ function AuthorFeedPage() {
           <Col xs="auto">
             <BackButton />
             <Navigation />
-            <div className="searchQuery center"><h2>Поиск:  '{searchQuery.get('q')}'</h2></div>
+            <div className="searchQuery center"><h2>Поиск:  <i>'{searchQuery.get('q')}'</i></h2></div>
             {searchStihs.map((stih, id) => {
               return (
                 <Row className="justify-content-center">

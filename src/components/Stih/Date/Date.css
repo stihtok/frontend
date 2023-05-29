@@ -8,9 +8,11 @@
   text-decoration: none;
   color:#989898;
   font-style: italic;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .date a:hover {
-  color: #000;
-  text-decoration: underline;
+  color: #989898;
+  border-bottom: 1px solid #989898;
 }

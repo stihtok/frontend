@@ -3,14 +3,16 @@
   font-family: Cormorant;
 }
 
-.author a {
+.author p a {
   text-decoration: none;
   color: #000;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
 }
 
-.author a:hover {
-  text-decoration: underline;
+.author p a:hover {
   color: #000;
+  border-bottom: 1px solid #000000;
 }
 
 

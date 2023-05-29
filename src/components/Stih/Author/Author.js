@@ -9,8 +9,8 @@ function Author(props) {
           className="authorImg"
           src={"" + props.authorImg}
         />
-        <p>{props.author}</p>
-      </NavLink>
+        </NavLink>
+        <p><NavLink to={"/author/" + props.id}>{props.author}</NavLink></p>
     </div>
   );
 }

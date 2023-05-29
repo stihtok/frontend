@@ -31,7 +31,7 @@ function AuthorPage() {
     <div className="App">
       <Container fluid>
         <Row className="justify-content-center">
-          <Col xs="auto" md="5" lg="4" xl="3">
+          <Col xs="auto" md="5" lg="4" xl="4">
             <BackButton />
             <Navigation />
             <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>

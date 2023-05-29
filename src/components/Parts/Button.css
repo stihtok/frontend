@@ -17,6 +17,7 @@
     touch-action: manipulation;
     vertical-align: middle;
     min-height: 35px;
+    transition: all 0.2s ease;
 }
 
 .button:hover {

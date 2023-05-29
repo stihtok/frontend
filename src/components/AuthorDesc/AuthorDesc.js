@@ -9,9 +9,8 @@ function AuthorDesc(props) {
           <img
             className="authorDescImg"
             src={"" + props.photo}
-          />
-          <p>{props.name}</p>
-          </a>
+          /></a>
+          <p><a href={"/author/" + props.id }>{props.name}</a></p>
           <p className="descText">{props.description}</p>
         </div>
       )
