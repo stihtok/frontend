@@ -1,5 +1,6 @@
 .searchButton {
     background: url("../img/search.svg")  no-repeat center center;
+    margin-left: -5px;
     width: 40px;
     border: 0px;
     transition: all 0.2s ease;
@@ -16,13 +17,23 @@
     font-style: italic;
     opacity: 0;
     border: 0px;
+    border-radius: 0;
     transition: all 0.3s ease;
     padding-left: 35px;
     height: 40px;
     margin-top:10px;
+    -webkit-appearance: none;
+    background: #fff;
+    -webkit-tap-highlight-color: transparent;
+    outline:0 !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
 }
 
 .searchInputActive {
+    border-radius: 0;
     padding-left: 35px;
     width: 300px;
     margin-left: -35px;
@@ -32,12 +43,23 @@
     height: 40px;
     border: 0px;
     transition: all 0.3s ease;
-    outline: 0;
+    outline:0 !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
     margin-top:10px;
-
+    background: #fff;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
-.searchInput:focus {
-    outline: 0;
+.searchInput:focus,
+.searchInput:active {
+    outline:0 !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
 }
