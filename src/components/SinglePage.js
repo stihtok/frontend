@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loading from "./Loading";
-import axios from "axios";
+import ky from "ky";
 import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
@@ -19,11 +19,15 @@ function SinglePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("/api/stih/" + stihId)
-    .then((response) => {
-      setStih(response.data);
+    ky.get("/api/stih/" + stihId)
+    .json()
+    .then(response => {
+      setStih(response);
     })
-    .finally(() => setIsLoading(false)); ;
+    .finally(() => setIsLoading(false))
+    .catch((error) => {
+      console.log(error)
+    });
   }, []);
 
 

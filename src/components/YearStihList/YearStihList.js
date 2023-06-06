@@ -1,7 +1,7 @@
 import "./YearStihList.css";
 import StihListByAuthor from "./StihListByAuthor";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import ky from "ky";
 
 function YearStihList(props) {
   let [authors, setAuthors] = useState([]);
@@ -9,11 +9,15 @@ function YearStihList(props) {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("/api/year/" +  props.year + "/all")
+    ky.get("/api/year/" +  props.year + "/all")
+    .json()
     .then((response) => {
-      setAuthors(response.data);
+      setAuthors(response);
     })
-    .finally(() => setIsLoading(false)); ;
+    .finally(() => setIsLoading(false))
+    .catch((error) => {
+      console.log(error)
+    });
   }, []);
 
 

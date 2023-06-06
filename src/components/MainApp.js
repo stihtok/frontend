@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
+import ky from "ky";
 import { createRef, useRef } from "react";
 import Navigation from "./Parts/Navigation";
 
@@ -15,10 +15,15 @@ function MainApp() {
   let observerLoader = useRef();
 
   const addStihsToBundle = () => {
-    axios.get("/api/bundle/").then((response) => {
+    ky.get("/api/bundle/")
+    .json()
+    .then (response => {
       let newBundle = []
-      newBundle = [...bundle, ...response.data,];
+      newBundle = [...bundle, ...response];
       setBundle(newBundle);
+    })
+    .catch((error) => {
+      console.log(error)
     });
   }
 
@@ -29,8 +34,13 @@ function MainApp() {
   };
 
   useEffect(() => {
-    axios.get("/api/bundle/").then((response) => {
-      setBundle(response.data);
+    ky.get("/api/bundle/")
+    .json()
+    .then(response => {
+      setBundle(response);
+    })
+    .catch((error) => {
+      console.log(error)
     });
   }, []);
 

@@ -2,7 +2,7 @@ import "./AuthorStihList.css";
 import AuthorStihTitle from "./AuthorStihTitle";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import ky from "ky";
 import Filter from "./../Parts/Filter";
 
 function AuthorStihList(props) {
@@ -18,11 +18,15 @@ function AuthorStihList(props) {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("/api/author/" + authorId + "/all")
+    ky.get("/api/author/" + authorId + "/all")
+    .json()
     .then((response) => {
-      setStihs(response.data);
+      setStihs(response);
     })
-    .finally(() => setIsLoading(false)); ;
+    .finally(() => setIsLoading(false))
+    .catch((error) => {
+      console.log(error)
+    });
   }, []);
 
   return (
