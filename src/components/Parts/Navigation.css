@@ -83,6 +83,8 @@
 
 #menu
 {
+  user-select: none;
+  -webkit-user-select: none;
   margin-top: -15px;
   position: absolute;
   height: 100vh;
@@ -104,6 +106,8 @@
   padding: 10px 0;
   font-size: 22px;
   transition: all 0.1s ease;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #menuToggle input:checked ~ ul

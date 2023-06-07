@@ -1,5 +1,6 @@
 import './Navigation.css';
 import Search from './Search';
+import { NavLink } from 'react-router-dom';
 
 
 function Navigation(props) {
@@ -14,8 +15,8 @@ function Navigation(props) {
             
             <ul id="menu">
             <li style={{marginBottom: "40px"}}><Search /></li>
-            <a href="/"><li>Главная</li></a>
-            <a href="/authors"><li>Авторы</li></a>
+            <NavLink to="/"><li>Главная</li></NavLink>
+            <NavLink to="/authors"><li>Авторы</li></NavLink>
 
             </ul>
         </div>
