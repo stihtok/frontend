@@ -7,13 +7,13 @@
     <meta name="theme-color" content="#000000" />
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+    <link rel="apple-touch-startup-image" href="/apple_splash_640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="/apple_splash_750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="/apple_splash_1242.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="/apple_splash_1125.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="/apple_splash_1536.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="/apple_splash_1668.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="/apple_splash_2048.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
     <meta
       name="description"
       content="Приложение для чтения стихов"
@@ -21,6 +21,7 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <script>navigator.serviceWorker.register("service-worker.js")</script> 
+  <script>navigator.serviceWorker.register("pwabuilder-adv-sw.js")</script> 
     <title>СтихТок</title>
   </head>
   <body>
