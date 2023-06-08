@@ -9,7 +9,8 @@ import AuthorPage from "./components/AuthorPage";
 import YearPage from "./components/YearPage";
 import AuthorsPage from "./components/AuthorsPage";
 import AuthorFeedPage from "./components/AuthorFeedPage";
-import SearchPage from "./components/SearchPage"
+import SearchPage from "./components/SearchPage";
+import FavoritesPage from "./components/FavoritesPage";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
   {
     path: "/search/",
     element: <SearchPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/favorites/",
+    element: <FavoritesPage />,
     errorElement: <ErrorPage />,
   },
 ]);

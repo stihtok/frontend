@@ -6,6 +6,7 @@ import Epigraph from './Epigraph/Epigraph';
 import './Stih.css'
 import Title from './Title/Title';
 import { forwardRef } from 'react';
+import Like from './Like/Like';
 
 const Stih = forwardRef((props, ref) => {
   return (
@@ -15,6 +16,7 @@ const Stih = forwardRef((props, ref) => {
         <Epigraph epigraph={props.stih.epigraph}/>
         <Body body={props.stih.body}/>
         <Date date={props.stih.createdAt} />
+        <Like id={props.stih.id}/>
     </div>
   );
 }

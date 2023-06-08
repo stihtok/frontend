@@ -1,44 +1,57 @@
 import "./MainApp.css";
-import { useState, useEffect } from "react";
-import AuthorDesc from "./AuthorDesc/AuthorDesc";
-import AuthorStihList from "./AuthorStihList/AuthorStihList";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ky from "ky";
-import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
+import { db } from "./db";
+import { useState, useEffect } from "react";
+import ky from "ky";
 import Stih from "./Stih/Stih";
 
-function AuthorFeedPage() {
-  let { authorId } = useParams();
-  let [authorStihs, setAuthorStihs] = useState([]);
+function FavoritesPage() {
+  let [likes, setLikes] = useState([]);
+  let [likeStihs, setLikeStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    ky
-      .get("/api/author/" + authorId + "/all")
+  function getStihsFromApi() {
+    console.log(likes);
+    likes.map(({stihId, id}) => {
+      ky
+      .get("/api/stih/" + stihId)
       .json()
       .then((response) => {
-        setAuthorStihs(response);
+        setLikeStihs(oldLikeStihs => [...oldLikeStihs, response]);
       })
       .finally(() => setIsLoading(false))
       .catch((error) => {
         console.log(error)
       });
+    })
+  }
+
+  async function getLikesFromIndexedDb() {
+    const allItems = await db.likes.orderBy("id").reverse().toArray();
+    setLikes(allItems);
+  }
+
+  useEffect(() => {
+    getLikesFromIndexedDb();
   }, []);
+
+  useEffect(() => {
+    getStihsFromApi();
+  }, [likes]);
 
   return (
     <div className="App">
+      <Navigation />
+      <BackButton />
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs="auto">
-            <BackButton />
-            <Navigation />
-            {authorStihs.map((stih, id) => {
+            {likeStihs.map((stih, id) => {
               return (
                 <Row className="justify-content-center">
                   <Col xs="auto">
@@ -54,4 +67,4 @@ function AuthorFeedPage() {
   );
 }
 
-export default AuthorFeedPage;
+export default FavoritesPage;

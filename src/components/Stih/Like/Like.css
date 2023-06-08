@@ -1,0 +1,55 @@
+.like-root input[type="checkbox"]
+{
+  display: block;
+  width: 60px;
+  height: 70px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 1;
+  -webkit-touch-callout: none;
+  margin-right: -10px;
+  margin-left: auto;
+  margin-top: 60px;
+  position: relative;
+}
+
+.like-root input[type="checkbox"]:checked ~ span {
+    background: red;
+}
+
+.like-h {
+    border-radius: 3px;
+    display: block;
+    height: 1px;
+    width: 40px;
+    background: #bbb;
+    margin-top: -13px;
+    margin-right: 0;
+    margin-left: auto;
+    transition: all 0.4s ease;
+}
+
+.like-p {
+    border-radius: 3px;
+    display: block;
+    height: 40px;
+    width: 1px;
+    background: #bbb;
+    margin-top: -40px;
+    margin-left: auto;
+    margin-right: 0;
+    transition: all 0.2s ease;
+}
+
+.like-k {
+    border-radius: 3px;
+    display: block;
+    height: 54px;
+    width: 1px;
+    background: #bbb;
+    margin-top: -47px;
+    margin-left: auto;
+    margin-right: 19px;
+    transform: rotate(45deg);
+    transition: all 0.2s ease;
+}
