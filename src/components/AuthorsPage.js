@@ -28,7 +28,7 @@ function AuthorsPage() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="List">
       <Container fluid>
       <Navigation />
       <BackButton />

@@ -44,12 +44,12 @@
 .like-k {
     border-radius: 3px;
     display: block;
-    height: 54px;
+    height: 56px;
     width: 1px;
     background: #bbb;
-    margin-top: -47px;
+    margin-top: -48px;
     margin-left: auto;
-    margin-right: 19px;
+    margin-right: 20px;
     transform: rotate(45deg);
     transition: all 0.2s ease;
 }

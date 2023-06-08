@@ -1,13 +1,28 @@
+import { useState } from 'react';
 import './Navigation.css';
 import Search from './Search';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 
 function Navigation(props) {
+    let [menu, setMenu] = useState(false);
+    let navigate = useNavigate();
+
+    function openClose() {
+        setMenu(current => !current);
+    }
+
+    async function navClick(url) {
+        setMenu(current => !current);
+        await new Promise(r => setTimeout(r, 250));
+        navigate(url);
+    }
+
     return (
         <nav role="navigation">
         <div id="menuToggle">
-            <input type="checkbox" autoComplete='off'/>
+            <input checked={menu} type="checkbox" autoComplete='off' onChange={e => openClose()}/>
             
             <span></span>
             <span></span>
@@ -15,9 +30,9 @@ function Navigation(props) {
             
             <ul id="menu">
             <li style={{marginBottom: "40px"}}><Search /></li>
-            <NavLink to="/"><li>Главная</li></NavLink>
-            <NavLink to="/authors"><li>Авторы</li></NavLink>
-            <NavLink to="/favorites"><li>Уголки</li></NavLink>
+            <NavLink onClick={e => navClick("/")}><li>Главная</li></NavLink>
+            <NavLink onClick={e => navClick("/authors")}><li>Авторы</li></NavLink>
+            <NavLink onClick={e => navClick("/favorites")}><li>Уголки</li></NavLink>
 
             </ul>
         </div>

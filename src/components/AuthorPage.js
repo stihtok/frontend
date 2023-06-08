@@ -32,7 +32,7 @@ function AuthorPage() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="List">
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs="auto" md="5" lg="4" xl="4">
