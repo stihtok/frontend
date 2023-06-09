@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import Button from "./Parts/Button";
+import {Helmet} from "react-helmet";
 
 function AuthorPage() {
   let { authorId } = useParams();
