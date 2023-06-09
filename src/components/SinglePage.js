@@ -10,6 +10,7 @@ import ky from "ky";
 import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
+import {Helmet} from "react-helmet";
 
 function SinglePage() {
 
@@ -30,9 +31,29 @@ function SinglePage() {
     });
   }, []);
 
+  function MetaTags() {
+    debugger;
+    if (!isLoading) {
+      return(
+        <Helmet>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={stih.author.name} />
+        <meta property="og:description" content={stih.title} />
+  
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={stih.author.name} />
+        <meta name="twitter:description" content={stih.title} />
+      </Helmet>
+      )
+    } else {
+      return
+    }
+  }
+
 
   return (
     <div className="Single">
+      <MetaTags />
       <Navigation />
       <Container fluid>
         <Row className="justify-content-center">

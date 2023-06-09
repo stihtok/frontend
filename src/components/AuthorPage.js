@@ -31,13 +31,33 @@ function AuthorPage() {
       });
   }, []);
 
+  function MetaTags() {
+    debugger;
+    if (!isLoading) {
+      return(
+        <Helmet>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={author.name} />
+        <meta property="og:description" content="Стихотворения" />
+  
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={author.name} />
+        <meta name="twitter:description" content="Стихотворения" />
+      </Helmet>
+      )
+    } else {
+      return
+    }
+  }
+
   return (
     <div className="List">
+      <BackButton />
+      <Navigation />
+      <MetaTags />
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs="auto" md="5" lg="4" xl="4">
-            <BackButton />
-            <Navigation />
             <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>
             <div className="center"><Button href={"/author/" + author.id + "/feed"} text="Читать лентой" /></div>
             <AuthorStihList />
