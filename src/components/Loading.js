@@ -1,6 +1,6 @@
 function Loading() {
     return (
-        <div className="message cetner">Загрузка</div>
+        <div className="message center">Загрузка</div>
     )
 }
 

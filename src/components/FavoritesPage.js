@@ -37,12 +37,11 @@ function FavoritesPage() {
   }
 
   function LikeStihsFeed() {
-    debugger;
     if (likes.length === 0) {
       return (<Row className="justify-content-center">
                   <Col xs="auto">
-                  <div className="message"><h2 className="center">Здесь пока пусто</h2>
-                  Добавляйте стихи в избранное, загибая уголки</div>
+                  <div style={{marginTop:"50px", textAlign: "center"}} className="message"><h2 className="center">Здесь пока пусто</h2>
+                  <p style={{marginTop:"50px", textAlign: "center"}}>Добавляйте стихи в избранное,<br />загибая уголки</p></div>
           </Col>
         </Row>)
     } else {
