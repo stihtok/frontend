@@ -36,7 +36,7 @@ function AuthorFeedPage() {
   function SearchOutput() {
     return (searchStihs.map((stih, id) => {
       return (
-        <Row className="justify-content-center">
+        <Row className="justify-content-center page">
           <Col xs="auto">
             <Stih stih={stih} />
           </Col>
