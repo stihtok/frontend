@@ -3,8 +3,8 @@
 
 .like-root input[type="checkbox"]
 {
-    width: 70px;
-    height: 70px;
+    width: 3em;
+    height: 3em;
     cursor: pointer;
     opacity: 0;
     z-index: 1;
@@ -15,36 +15,36 @@
     margin-top:10px;
 }
 .like-root input[type="checkbox"]:checked ~ .like-triangle-inner {
-    width: 3em;
-	height: 3em;
+    width: 2em;
+	height: 2em;
     background: rgb(255, 255, 255);
     clip-path: polygon(50% 50%, 97% 7%, 7% 97%);
 	-webkit-clip-path: polygon(50% 50%, 97% 7%, 7% 97%);
 }
 
 .like-root input[type="checkbox"]:checked ~ .like-triangle {
-    width: 3em;
-	height: 3em;
+    width: 2em;
+	height: 2em;
     background: #999999;
     clip-path: polygon(0% 0%,100% 0,0% 100%) ;
 	-webkit-clip-path: polygon(0% 0%,100% 0,0% 100%);
 }
 
 .like-triangle{
-    width: 3em;
-	height: 3em;
+    width: 2em;
+	height: 2em;
     background: #999999;
     clip-path: polygon(100% 100%,100% 0,0% 100%) ;
 	-webkit-clip-path: polygon(100% 100%,100% 0,0% 100%);
     transition: clip-path 0.5s;
-    top: -71px;
+    top: -3em;
     left: 80%;
     position: relative;
 }
 
 .like-triangle-inner{
-    width: 3em;
-	height: 3em;
+    width: 2em;
+	height: 2em;
     transition: clip-path 0.1s;
     background: rgb(255, 255, 255);
     clip-path: polygon(97% 97%, 97% 7%, 7% 97%);
