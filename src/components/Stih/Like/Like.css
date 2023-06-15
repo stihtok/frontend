@@ -1,55 +1,53 @@
+.like-root {
+}
+
 .like-root input[type="checkbox"]
 {
-  display: block;
-  width: 60px;
-  height: 70px;
-  cursor: pointer;
-  opacity: 0;
-  z-index: 1;
-  -webkit-touch-callout: none;
-  margin-right: -10px;
-  margin-left: auto;
-  margin-top: 60px;
-  position: relative;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+    -webkit-touch-callout: none;
+    position: relative;
+    top: 0px;
+    left: 80%;
+    margin-top:10px;
+}
+.like-root input[type="checkbox"]:checked ~ .like-triangle-inner {
+    width: 4em;
+	height: 4em;
+    background: rgb(255, 255, 255);
+    clip-path: polygon(50% 50%, 97% 7%, 7% 97%);
+	-webkit-clip-path: polygon(50% 50%, 97% 7%, 7% 97%);
 }
 
-.like-root input[type="checkbox"]:checked ~ span {
-    background: red;
+.like-root input[type="checkbox"]:checked ~ .like-triangle {
+    width: 4em;
+	height: 4em;
+    background: #c7999b;
+    clip-path: polygon(0% 0%,100% 0,0% 100%) ;
+	-webkit-clip-path: polygon(0% 0%,100% 0,0% 100%);
 }
 
-.like-h {
-    border-radius: 3px;
-    display: block;
-    height: 1px;
-    width: 40px;
-    background: #bbb;
-    margin-top: -13px;
-    margin-right: 0;
-    margin-left: auto;
-    transition: all 0.4s ease;
+.like-triangle{
+    width: 4em;
+	height: 4em;
+    background: #a7a7a7;
+    clip-path: polygon(100% 100%,100% 0,0% 100%) ;
+	-webkit-clip-path: polygon(100% 100%,100% 0,0% 100%);
+    transition: clip-path 0.5s;
+    top: -71px;
+    left: 80%;
+    position: relative;
 }
 
-.like-p {
-    border-radius: 3px;
-    display: block;
-    height: 40px;
-    width: 1px;
-    background: #bbb;
-    margin-top: -40px;
-    margin-left: auto;
-    margin-right: 0;
-    transition: all 0.2s ease;
+.like-triangle-inner{
+    width: 4em;
+	height: 4em;
+    transition: clip-path 0.1s;
+    background: rgb(255, 255, 255);
+    clip-path: polygon(97% 97%, 97% 7%, 7% 97%);
+	-webkit-clip-path: polygon(97% 97%, 97% 7%, 7% 97%);
 }
 
-.like-k {
-    border-radius: 3px;
-    display: block;
-    height: 56px;
-    width: 1px;
-    background: #bbb;
-    margin-top: -48px;
-    margin-left: auto;
-    margin-right: 20px;
-    transform: rotate(45deg);
-    transition: all 0.2s ease;
-}

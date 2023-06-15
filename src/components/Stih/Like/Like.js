@@ -35,11 +35,8 @@ function Like(props) {
 
     return (
         <div className="like-root">
-
             <input type="checkbox" checked={like} autoComplete='off' onChange={e => likeDislike(e.target.checked)} />
-            <span className="like-h"></span>
-            <span className="like-p"></span>
-            <span className="like-k"></span>
+            <div className="like-triangle"><div className="like-triangle-inner"></div></div>
         </div>
     )
 }

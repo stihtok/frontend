@@ -53,7 +53,7 @@ function FavoritesPage() {
           <Col xs="auto">
             {likeStihs.map((stih, id) => {
               return (
-                <Row className="justify-content-center">
+                <Row className="justify-content-center page">
                   <Col xs="auto">
                     <Stih stih={stih} />
                   </Col>

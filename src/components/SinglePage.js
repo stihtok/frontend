@@ -32,7 +32,6 @@ function SinglePage() {
   }, []);
 
   function MetaTags() {
-    debugger;
     if (!isLoading) {
       return(
         <Helmet>

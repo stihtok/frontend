@@ -65,7 +65,7 @@ function MainApp() {
               <Row
                 key={stih.id}
                 ref={lastItem}
-                className="justify-content-center"
+                className="justify-content-center page"
               >
                 <Col xs="auto">
                   <Stih stih={stih} />
@@ -77,7 +77,7 @@ function MainApp() {
             <Row
               key={stih.id}
               ref={lastItem}
-              className="justify-content-center"
+              className="justify-content-center page"
             >
               <Col xs="auto">
                 <Stih stih={stih} />

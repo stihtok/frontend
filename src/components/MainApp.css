@@ -6,6 +6,10 @@
   padding-bottom: 100px;
 }
 
+.page {
+  border-bottom: 10px solid #fafafa;
+}
+
 .List
 {
   padding-bottom: 100px;

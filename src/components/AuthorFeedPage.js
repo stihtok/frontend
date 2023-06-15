@@ -1,7 +1,5 @@
 import "./MainApp.css";
 import { useState, useEffect } from "react";
-import AuthorDesc from "./AuthorDesc/AuthorDesc";
-import AuthorStihList from "./AuthorStihList/AuthorStihList";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -40,7 +38,7 @@ function AuthorFeedPage() {
             <Navigation />
             {authorStihs.map((stih, id) => {
               return (
-                <Row className="justify-content-center">
+                <Row className="justify-content-center page">
                   <Col xs="auto">
                     <Stih stih={stih} />
                   </Col>

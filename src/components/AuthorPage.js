@@ -33,7 +33,6 @@ function AuthorPage() {
   }, []);
 
   function MetaTags() {
-    debugger;
     if (!isLoading) {
       return(
         <Helmet>
