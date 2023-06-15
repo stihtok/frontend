@@ -5,8 +5,7 @@ import Col from "react-bootstrap/Col";
 import { NavLink } from 'react-router-dom';
 
 function Date(props) {
-  let yearNum = props.date.replace(/\D/g,'');
-
+  let yearNum = props.date.match(/\d\d\d\d/);
   return (
       <Container>
         <Row>
