@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import Stih from "./Stih/Stih";
+import Loading from "./Loading";
 
 function AuthorFeedPage() {
   let { authorId } = useParams();
@@ -29,6 +30,20 @@ function AuthorFeedPage() {
       });
   }, []);
 
+  function Feed() {
+    return (
+      authorStihs.map((stih, id) => {
+        return (
+          <Row className="justify-content-center page">
+            <Col xs="auto">
+              <Stih stih={stih} />
+            </Col>
+          </Row>
+        )
+      })
+    )
+  }
+
   return (
     <div className="App">
       <Container fluid>
@@ -36,15 +51,7 @@ function AuthorFeedPage() {
           <Col xs="auto">
             <BackButton />
             <Navigation />
-            {authorStihs.map((stih, id) => {
-              return (
-                <Row className="justify-content-center page">
-                  <Col xs="auto">
-                    <Stih stih={stih} />
-                  </Col>
-                </Row>
-              )
-            })}
+            {isLoading ? <Loading /> : <Feed />}
           </Col>
         </Row>
       </Container>

@@ -9,6 +9,7 @@ function AuthorDesc(props) {
           <img
             className="authorDescImg"
             src={"" + props.photo}
+            alt={props.name}
           /></a>
           <p><a href={"/author/" + props.id }>{props.name}</a></p>
           <p className="descText">{props.description}</p>
@@ -20,6 +21,7 @@ function AuthorDesc(props) {
           <img
             className="authorDescImg"
             src={"" + props.photo}
+            alt={props.name}
           />
           <p>{props.name}</p>
           <p className="descText">{props.description}</p>
