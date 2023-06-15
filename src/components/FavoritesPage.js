@@ -9,6 +9,7 @@ import { db } from "./db";
 import { useState, useEffect } from "react";
 import ky from "ky";
 import Stih from "./Stih/Stih";
+import Loading from "./Loading";
 
 function FavoritesPage() {
   let [likes, setLikes] = useState([]);
@@ -16,7 +17,6 @@ function FavoritesPage() {
   let [isLoading, setIsLoading] = useState(true);
 
   function getStihsFromApi() {
-    console.log(likes);
     likes.map(({stihId, id}) => {
       ky
       .get("/api/stih/" + stihId)
@@ -24,16 +24,40 @@ function FavoritesPage() {
       .then((response) => {
         setLikeStihs(oldLikeStihs => [...oldLikeStihs, response]);
       })
-      .finally(() => setIsLoading(false))
       .catch((error) => {
         console.log(error)
       });
     })
+    setIsLoading(false)
   }
 
   async function getLikesFromIndexedDb() {
     const allItems = await db.likes.orderBy("id").reverse().toArray();
     setLikes(allItems);
+  }
+
+  function LikeStihsFeed() {
+    debugger;
+    if (likes.length === 0) {
+      return (<Row className="justify-content-center">
+                  <Col xs="auto">
+                  <div className="message"><h2 className="center">Здесь пока пусто</h2>
+                  Добавляйте стихи в избранное, загибая уголки</div>
+          </Col>
+        </Row>)
+    } else {
+    return (
+      likeStihs.map((stih, id) => {
+      return (
+        <Row className="justify-content-center page">
+          <Col xs="auto">
+            <Stih stih={stih} />
+          </Col>
+        </Row>
+      )
+    })
+    )
+    }
   }
 
   useEffect(() => {
@@ -50,15 +74,7 @@ function FavoritesPage() {
       <BackButton />
       <Container fluid>
           <Col xs="auto">
-            {likeStihs.map((stih, id) => {
-              return (
-                <Row className="justify-content-center page">
-                  <Col xs="auto">
-                    <Stih stih={stih} />
-                  </Col>
-                </Row>
-              )
-            })}
+          {isLoading ? <Loading /> : <LikeStihsFeed />}
           </Col>
       </Container>
     </div>

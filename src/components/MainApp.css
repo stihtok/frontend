@@ -36,3 +36,8 @@
 .center {
   text-align: center;
 }
+
+.message {
+  margin-top: 100px;
+  font-family: NotoSerif, serif;
+}
