@@ -25,7 +25,7 @@
 .like-root input[type="checkbox"]:checked ~ .like-triangle {
     width: 3em;
 	height: 3em;
-    background: #777777;
+    background: #999999;
     clip-path: polygon(0% 0%,100% 0,0% 100%) ;
 	-webkit-clip-path: polygon(0% 0%,100% 0,0% 100%);
 }
@@ -33,7 +33,7 @@
 .like-triangle{
     width: 3em;
 	height: 3em;
-    background: #777777;
+    background: #999999;
     clip-path: polygon(100% 100%,100% 0,0% 100%) ;
 	-webkit-clip-path: polygon(100% 100%,100% 0,0% 100%);
     transition: clip-path 0.5s;
