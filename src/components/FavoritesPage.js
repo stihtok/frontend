@@ -49,7 +49,6 @@ function FavoritesPage() {
       <Navigation />
       <BackButton />
       <Container fluid>
-        <Row className="justify-content-center">
           <Col xs="auto">
             {likeStihs.map((stih, id) => {
               return (
@@ -61,7 +60,6 @@ function FavoritesPage() {
               )
             })}
           </Col>
-        </Row>
       </Container>
     </div>
   );
