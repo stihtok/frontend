@@ -44,7 +44,7 @@ function FavoritesPage() {
                   <Col xs="auto">
                   <div style={{marginTop:"50px", textAlign: "center"}} className="message"><h2 className="center">Здесь пока пусто</h2>
                   <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "center"}}>Добавляйте стихи в избранное,<br />загибая уголки</p></div>
-                  <div style={{textAlign:"right", marginRight:"20px"}}><img src={arrow} alt="arrow" /></div>
+                  <div style={{textAlign:"right", marginRight:"20px"}}><img style={{rotate: "-3deg"}} src={arrow} alt="arrow" /></div>
                   <div style={{marginTop:"5px"}} className="like-root">
                       <input type="checkbox" autoComplete='off' />
                       <div className="like-triangle"><div className="like-triangle-inner"></div></div>
