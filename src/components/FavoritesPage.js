@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 import ky from "ky";
 import Stih from "./Stih/Stih";
 import Loading from "./Loading";
+import "./Stih/Like/Like.css";
+import arrow from './img/arrow.svg';
 
 function FavoritesPage() {
   let [likes, setLikes] = useState([]);
@@ -41,7 +43,12 @@ function FavoritesPage() {
       return (<Row className="justify-content-center">
                   <Col xs="auto">
                   <div style={{marginTop:"50px", textAlign: "center"}} className="message"><h2 className="center">Здесь пока пусто</h2>
-                  <p style={{marginTop:"50px", textAlign: "center"}}>Добавляйте стихи в избранное,<br />загибая уголки</p></div>
+                  <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "center"}}>Добавляйте стихи в избранное,<br />загибая уголки</p></div>
+                  <div style={{textAlign:"right", marginRight:"20px"}}><img src={arrow} alt="arrow" /></div>
+                  <div style={{marginTop:"5px"}} className="like-root">
+                      <input type="checkbox" autoComplete='off' />
+                      <div className="like-triangle"><div className="like-triangle-inner"></div></div>
+                  </div>
           </Col>
         </Row>)
     } else {
