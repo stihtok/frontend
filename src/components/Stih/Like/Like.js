@@ -1,6 +1,7 @@
 import "./Like.css"
 import { db } from "../../db";
 import { useEffect, useState } from "react";
+import ky from "ky";
 
 function Like(props) {
     let stihId = props.id
@@ -24,9 +25,17 @@ function Like(props) {
             if (likeStatus) {
                 setLike(true);
                 await db.likes.add({"stihId": stihId});
+                ky.get("/api/stih/" + stihId + "/like")
+                .catch((error) => {
+                    console.log("Like not sent")
+                });
             } else {
                 setLike(false);
                 await db.likes.where("stihId").equals(stihId).delete();
+                ky.get("/api/stih/" + stihId + "/dislike")
+                .catch((error) => {
+                    console.log("Like not sent")
+                });
             }
           } catch (error) {
             console.log(`Не удалось поставить лайк ${error}`);

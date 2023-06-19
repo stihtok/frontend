@@ -55,8 +55,8 @@ function SinglePage() {
   return (
     <div className="Single">
       <MetaTags />
-      <Navigation />
       <Container fluid>
+        <Navigation />
         <Row className="justify-content-center">
           <Col xs="auto">
             <BackButton />
