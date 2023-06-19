@@ -38,13 +38,13 @@ function AuthorPage() {
         <Helmet>
         <meta property="og:type" content="article" />
         <meta property="og:title" content={author.name} />
-        <meta property="og:description" content="Стихотворения" />
-        <meta name="og:image" content="/logo512.png" />
+        <meta property="og:description" content="Все стихотворения автора" />
+        <meta property="og:image" content={author.photo} />
   
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={author.name} />
-        <meta name="twitter:description" content="Стихотворения" />
-        <meta name="twitter:image" content="/logo512.png" />
+        <meta name="twitter:description" content="Все стихотворения автора" />
+        <meta name="twitter:image" content={author.photo} />
 
       </Helmet>
       )

@@ -38,7 +38,7 @@ function SinglePage() {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={stih.author.name} />
         <meta property="og:description" content={stih.title} />
-        <meta name="og:image" content={stih.author.photo} />
+        <meta property="og:image" content={stih.author.photo} />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={stih.author.name} />
