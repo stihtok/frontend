@@ -46,11 +46,12 @@ function AuthorFeedPage() {
 
   return (
     <div className="App">
+      <BackButton />
+      <Navigation />
+      
       <Container fluid>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center page">
           <Col xs="auto">
-            <BackButton />
-            <Navigation />
             {isLoading ? <Loading /> : <Feed />}
           </Col>
         </Row>

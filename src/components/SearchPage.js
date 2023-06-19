@@ -47,7 +47,7 @@ function AuthorFeedPage() {
   return (
     <div className="App">
       <Container fluid>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center page">
           <Col xs="auto">
             <BackButton />
             <Navigation />
