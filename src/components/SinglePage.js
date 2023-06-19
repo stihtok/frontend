@@ -36,14 +36,14 @@ function SinglePage() {
       return(
         <Helmet>
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={stih.author.name} />
-        <meta property="og:description" content={stih.title} />
-        <meta name="og:image" content="/logo512.png" />
+        <meta property="og:title" content="{stih.author.name}" />
+        <meta property="og:description" content="{stih.title}" />
+        <meta name="og:image" content="{stih.author.photo}" />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={stih.author.name} />
-        <meta name="twitter:description" content={stih.title} />
-        <meta name="twitter:image" content="/logo512.png" />
+        <meta name="twitter:title" content="{stih.author.name}" />
+        <meta name="twitter:description" content="{stih.title}" />
+        <meta name="twitter:image" content="{stih.author.photo}" />
       </Helmet>
       )
     } else {
