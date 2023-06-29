@@ -1,6 +1,6 @@
 /** Global preloader styles **/
 .pl, .pl:before, .pl:after {
-	animation-duration: 3s;
+	animation-duration: 4s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
