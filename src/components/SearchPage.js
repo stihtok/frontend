@@ -11,12 +11,12 @@ import Navigation from "./Parts/Navigation";
 import Stih from "./Stih/Stih";
 import "./SearchPage.css";
 import Loading from "./Loading";
-
+import AuthorDesc from "./AuthorDesc/AuthorDesc";
 
 
 function AuthorFeedPage() {
   let [searchQuery] = useSearchParams();
-  let [searchStihs, setSearchStihs] = useState([]);
+  let [searchObjects, setSearchObjects] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function AuthorFeedPage() {
       .get("/api/search/" + searchQuery.get('q'), { timeout: 20000 })
       .json()
       .then(response => {
-        setSearchStihs(response);
+        setSearchObjects(response);
       })
       .finally(() => setIsLoading(false))
       .catch((error) => {
@@ -34,27 +34,33 @@ function AuthorFeedPage() {
   }, []);
 
   function SearchOutput() {
-    return (searchStihs.map((stih, id) => {
+    return (searchObjects.map((object, id) => {
+      if ('title' in object) {
       return (
         <Row className="justify-content-center page">
           <Col xs="auto">
-            <Stih stih={stih} />
+            <Stih stih={object} />
           </Col>
         </Row>
-      )
+      )} else {
+        return(
+        <Row className="justify-content-center page">
+          <Col xs="auto">
+            <AuthorDesc name={object.name} photo={object.photo} id={object.id}/>
+          </Col>
+        </Row>)
+      }
     }))
   }
   return (
     <div className="App">
       <Container fluid>
-        <Row className="justify-content-center page">
           <Col xs="auto">
             <BackButton />
             <Navigation />
             <div className="searchQuery center"><h2>Поиск:  <i>'{searchQuery.get('q')}'</i></h2></div>
             {isLoading ? <Loading /> : <SearchOutput />}
           </Col>
-        </Row>
       </Container>
     </div>
   );
