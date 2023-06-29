@@ -10,6 +10,7 @@ import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import Stih from "./Stih/Stih";
 import Loading from "./Loading";
+import ErrorPage from "./error-page";
 
 function AuthorFeedPage() {
   let { authorId } = useParams();
