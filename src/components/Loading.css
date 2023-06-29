@@ -1,17 +1,17 @@
 /** Global preloader styles **/
 .pl, .pl:before, .pl:after {
-	animation-duration: 2s;
+	animation-duration: 3s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 .pl {
-	margin: 5em auto 1.5em auto;
+	margin: 8em auto 1.5em auto;
 	position: relative;
 	width: 3em;
 	height: 3em;
 }
 .pl:before, .pl:after {
-	background: #555;
+	background: #999999;
 	content: "";
 	display: block;
 	position: absolute;
@@ -26,34 +26,33 @@
 .pl-name {
 	text-align: center;
 }
-/* Leap Frog */
-.pl-leapfrog:before, .pl-leapfrog:after {
-	clip-path: polygon(0 0,100% 0,0 100%);
-	-webkit-clip-path: polygon(0 0,100% 0,0 100%);
-	top: 50%;
-	left: 50%;
-	width: 70.71%;
-	height: 70.71%;
-	transform-origin: 0 0;
+/* Origami */
+.pl-origami {
+	animation-name: origamiA;
+	animation-timing-function: steps(4);
 }
-.pl-leapfrog:before {
-	animation-name: leapFrogA;
+.pl-origami:before, .pl-origami:after {
+	clip-path: polygon(50% 0,100% 100%,0% 100%);
+	-webkit-clip-path: polygon(50% 0,100% 100%,0% 100%);
 }
-.pl-leapfrog:after {
-	animation-name: leapFrogB;
-	background: #c9c9c9;
+.pl-origami:before {
+	animation-name: origamiB;
 }
-@keyframes leapFrogA {
-	from { transform: rotateZ(-135deg) rotateY(0deg) rotateX(0deg); z-index: 0 }
-	12.5% { transform: rotateZ(-135deg) rotateY(-180deg) rotateX(0deg); z-index: 1 }
-	25%, 50% { transform: rotateZ(-135deg) rotateY(-180deg) rotateX(-180deg); z-index: 0 }
-	62.5% { transform: rotateZ(-135deg) rotateY(0deg) rotateX(-180deg); z-index: 1 }
-	75%, to { transform: rotateZ(-135deg) rotateY(0deg) rotateX(-360deg); z-index: 0 }
+.pl-origami:after {
+	animation-name: origamiC;
+	transform: rotate(180deg);
 }
-@keyframes leapFrogB {
-	from, 25% { transform: rotateZ(-45deg) rotateY(0deg) rotateX(0deg); z-index: 0 }
-	37.5% { transform: rotateZ(-45deg) rotateY(-180deg) rotateX(0deg); z-index: 1 }
-	50%, 75% { transform: rotateZ(-45deg) rotateY(-180deg) rotateX(-180deg); z-index: 0 }
-	87.5% { transform: rotateZ(-45deg) rotateY(0deg) rotateX(-180deg); z-index: 1 }
-	to { transform: rotateZ(-45deg) rotateY(0deg) rotateX(-360deg); z-index: 0 }
+@keyframes origamiA {
+	from { transform: rotate(0) }
+	to { transform: rotate(-360deg) }
+}
+@keyframes origamiB {
+	from, 25%, 50%, 75%, to { opacity: 1; transform: translateZ(0) rotateX(0deg) }
+	12.5%, 62.5% { opacity: 1; transform: translateZ(1px) rotateX(-180deg) }
+	37.5%, 87.5% { opacity: 0; transform: translateZ(0) rotateX(0deg) }
+}
+@keyframes origamiC {
+	from, 25%, 50%, 75%, to { opacity: 1; transform: translateZ(0) rotateZ(180deg) rotateX(0deg) }
+	12.5%, 62.5% { opacity: 0; transform: translateZ(0) rotateZ(180deg) rotateX(0deg) }
+	37.5%, 87.5% { opacity: 1; transform: translateZ(1px) rotateZ(180deg) rotateX(-180deg) }
 }
