@@ -15,6 +15,8 @@ function AuthorFeedPage() {
   let { authorId } = useParams();
   let [authorStihs, setAuthorStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
+  let [isError, setIsError] = useState(false);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,7 +28,8 @@ function AuthorFeedPage() {
       })
       .finally(() => setIsLoading(false))
       .catch((error) => {
-        console.log(error)
+        console.log(error);
+        setIsError(true);
       });
   }, []);
 
@@ -44,17 +47,16 @@ function AuthorFeedPage() {
     )
   }
 
+  if (isError) return <ErrorPage />
+
   return (
     <div className="App">
       <BackButton />
       <Navigation />
-      
       <Container fluid>
-        <Row className="justify-content-center page">
           <Col xs="auto">
             {isLoading ? <Loading /> : <Feed />}
           </Col>
-        </Row>
       </Container>
     </div>
   );

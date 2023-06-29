@@ -12,11 +12,13 @@ import Stih from "./Stih/Stih";
 import Loading from "./Loading";
 import "./Stih/Like/Like.css";
 import arrow from './img/arrow.svg';
+import ErrorPage from "./error-page";
 
 function FavoritesPage() {
   let [likes, setLikes] = useState([]);
   let [likeStihs, setLikeStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
+  let [isError, setIsError] = useState(false);
 
   function getStihsFromApi() {
     likes.map(({stihId, id}) => {
@@ -27,7 +29,8 @@ function FavoritesPage() {
         setLikeStihs(oldLikeStihs => [...oldLikeStihs, response]);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
+        setIsError(true);
       });
     })
     setIsLoading(false)
@@ -73,6 +76,8 @@ function FavoritesPage() {
   useEffect(() => {
     getStihsFromApi();
   }, [likes]);
+
+  if (isError) return <ErrorPage />
 
   return (
     <div className="App">

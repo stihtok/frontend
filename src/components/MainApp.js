@@ -8,11 +8,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ky from "ky";
 import { createRef, useRef } from "react";
 import Navigation from "./Parts/Navigation";
+import ErrorPage from "./error-page";
 
 function MainApp() {
   let [bundle, setBundle] = useState([]);
   let lastItem = createRef();
   let observerLoader = useRef();
+  let [isError, setIsError] = useState(false);
 
   const addStihsToBundle = () => {
     ky.get("/api/bundle/")
@@ -23,7 +25,8 @@ function MainApp() {
       setBundle(newBundle);
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
+      setIsError(true);
     });
   }
 
@@ -40,7 +43,8 @@ function MainApp() {
       setBundle(response);
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
+      setIsError(true);
     });
   }, []);
 
@@ -54,6 +58,8 @@ function MainApp() {
       observerLoader.current.observe(lastItem.current);
     }
   }, [lastItem]);
+
+  if (isError) return <ErrorPage />
 
   return (
     <div className="App">

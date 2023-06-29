@@ -8,10 +8,13 @@ import ky from "ky";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import AuthorDesc from "./AuthorDesc/AuthorDesc"
+import Loading from "./Loading";
+import ErrorPage from "./error-page";
 
 function AuthorsPage() {
   let [authors, setAuthors] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
+  let [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,9 +26,12 @@ function AuthorsPage() {
       })
       .finally(() => setIsLoading(false))
       .catch((error) => {
-        console.log(error)
+        console.log(error);
+        setIsError(true);
       });
   }, []);
+
+  if (isError) return <ErrorPage />
 
   return (
     <div className="List">

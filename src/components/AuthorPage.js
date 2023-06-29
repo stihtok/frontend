@@ -11,12 +11,15 @@ import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import Button from "./Parts/Button";
+import ErrorPage from "./error-page";
 import {Helmet} from "react-helmet";
+import Loading from "./Loading";
 
 function AuthorPage() {
   let { authorId } = useParams();
   let [author, setAuthor] = useState({});
   let [isLoading, setIsLoading] = useState(true);
+  let [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,7 +31,8 @@ function AuthorPage() {
       })
       .finally(() => setIsLoading(false))
       .catch((error) => {
-        console.log(error)
+        console.log(error);
+        setIsError(true);
       });
   }, []);
 
@@ -53,6 +57,22 @@ function AuthorPage() {
     }
   }
 
+  function PageContent() {
+    if (isLoading) {
+        return (<Loading />)
+    } else {
+      return (
+        <>
+          <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>
+          <div className="center"><Button href={"/author/" + author.id + "/feed"} text="Читать лентой" /></div>
+          <AuthorStihList />
+        </>
+      )
+    }
+  }
+
+  if (isError) return <ErrorPage />
+
   return (
     <div className="List">
       <BackButton />
@@ -61,9 +81,7 @@ function AuthorPage() {
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs="auto" md="5" lg="4" xl="4">
-            <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>
-            <div className="center"><Button href={"/author/" + author.id + "/feed"} text="Читать лентой" /></div>
-            <AuthorStihList />
+            <PageContent />
           </Col>
         </Row>
       </Container>
