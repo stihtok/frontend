@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navigation from "./Parts/Navigation";
 import "./MainApp.css";
+import BackButton from "./Parts/BackButton";
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -12,6 +13,7 @@ export default function ErrorPage() {
   return (
     <div className="App">
       <Navigation />
+      <BackButton />
       <div className="error-page center">
       <Container fluid>
             <Row className="justify-content-center">
