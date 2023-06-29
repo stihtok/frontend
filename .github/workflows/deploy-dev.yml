@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
-          cache: 'npm'
       - run: npm install
       - run: PUBLIC_URL=${{ secrets.DEV_URL }} npm run build || true
       - run: rsync -aI --delete-after build/* /opt/dev/frontend/
