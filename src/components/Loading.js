@@ -3,7 +3,9 @@ import "./MainApp.css"
 
 function Loading() {
     return (
-        <div className="loader">Загрузка</div>
+        <div class="cell">
+            <div class="pl pl-leapfrog"></div>
+	    </div>
     )
 }
 
