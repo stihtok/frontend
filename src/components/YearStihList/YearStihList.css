@@ -1,6 +1,8 @@
 .yearStihList {
-    padding-top: 30px;
     padding-left: 10px;
+}
+.yearAuthor {
+    padding-top: 50px;
 }
 
 .yearStihTitle a {
