@@ -1,6 +1,9 @@
+import "./Loading.css"
+import "./MainApp.css"
+
 function Loading() {
     return (
-        <div className="message center">Загрузка</div>
+        <div className="loader">Загрузка</div>
     )
 }
 
