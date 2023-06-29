@@ -6,6 +6,10 @@
     margin-bottom: 40px;
 }
 
+.authorDesc h1 {
+    font-weight: normal;
+}
+
 .descText {
     font-size: 14px;
     color: #656565;
@@ -13,18 +17,20 @@
     margin-bottom: 40px;
 }
 
-.authorDesc p a {
+.authorDesc h1 a {
+    font-size: 1em;
     color: #000;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: all 0.2s ease;
+    font-weight: normal;
 }
-.authorDesc p a:hover {
+.authorDesc h1 a:hover {
     color: #000;
     border-bottom: 1px solid #000;
 }
 
-.authorDesc p {
+.authorDesc h1 {
     margin-bottom: 10px;
 }
 

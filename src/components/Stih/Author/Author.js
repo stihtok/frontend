@@ -10,7 +10,7 @@ function Author(props) {
           src={"" + props.authorImg}
         />
         </NavLink>
-        <p><NavLink to={"/author/" + props.id}>{props.author}</NavLink></p>
+        <h2><NavLink to={"/author/" + props.id}>{props.author}</NavLink></h2>
     </div>
   );
 }

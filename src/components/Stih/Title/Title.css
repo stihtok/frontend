@@ -8,6 +8,12 @@
     font-family: Arsenal;
 }
 
+.title h1 {
+    font-weight: bold;
+    font-size: 1em;
+    font-family: Arsenal;
+}
+
 .title a {
     text-decoration: none;
     color: #000;

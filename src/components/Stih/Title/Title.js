@@ -11,7 +11,7 @@ function Title(props) {
 
   return (
     <div className="title">
-        <NavLink to={"/stih/"+props.id}>{props.title}</NavLink>
+        <NavLink to={"/stih/"+props.id}><h1>{props.title}</h1></NavLink>
     </div>
   );
 }

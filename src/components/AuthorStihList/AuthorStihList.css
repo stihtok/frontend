@@ -11,6 +11,10 @@
     margin-bottom: 15px;
 }
 
+.authorStihTitle h2 {
+    font-size: 1em;
+}
+
 .authorStihTitle a {
     font-family: Arsenal;
     color: #000;
