@@ -19,7 +19,7 @@ function AuthorsPage() {
   useEffect(() => {
     setIsLoading(true);
     ky
-      .get("/api/authors/")
+      .get("/api/authors/", { timeout: 20000 })
       .json()
       .then((response) => {
         setAuthors(response);

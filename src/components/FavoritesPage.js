@@ -23,7 +23,7 @@ function FavoritesPage() {
   function getStihsFromApi() {
     likes.map(({stihId, id}) => {
       ky
-      .get("/api/stih/" + stihId)
+      .get("/api/stih/" + stihId, { timeout: 20000 })
       .json()
       .then((response) => {
         setLikeStihs(oldLikeStihs => [...oldLikeStihs, response]);

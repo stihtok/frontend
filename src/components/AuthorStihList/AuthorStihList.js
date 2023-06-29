@@ -18,7 +18,7 @@ function AuthorStihList(props) {
 
   useEffect(() => {
     setIsLoading(true);
-    ky.get("/api/author/" + authorId + "/all")
+    ky.get("/api/author/" + authorId + "/all", { timeout: 20000 })
     .json()
     .then((response) => {
       setStihs(response);

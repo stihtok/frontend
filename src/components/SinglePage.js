@@ -20,7 +20,7 @@ function SinglePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    ky.get("/api/stih/" + stihId)
+    ky.get("/api/stih/" + stihId, { timeout: 20000 })
     .json()
     .then(response => {
       setStih(response);

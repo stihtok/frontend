@@ -25,14 +25,14 @@ function Like(props) {
             if (likeStatus) {
                 setLike(true);
                 await db.likes.add({"stihId": stihId});
-                ky.get("/api/stih/" + stihId + "/like")
+                ky.get("/api/stih/" + stihId + "/like", { timeout: 20000 })
                 .catch((error) => {
                     console.log("Like not sent")
                 });
             } else {
                 setLike(false);
                 await db.likes.where("stihId").equals(stihId).delete();
-                ky.get("/api/stih/" + stihId + "/dislike")
+                ky.get("/api/stih/" + stihId + "/dislike", { timeout: 20000 })
                 .catch((error) => {
                     console.log("Like not sent")
                 });

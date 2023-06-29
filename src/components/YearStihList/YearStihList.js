@@ -12,7 +12,7 @@ function YearStihList(props) {
 
   useEffect(() => {
     setIsLoading(true);
-    ky.get("/api/year/" +  props.year + "/all")
+    ky.get("/api/year/" +  props.year + "/all", { timeout: 20000 })
     .json()
     .then((response) => {
       setAuthors(response);

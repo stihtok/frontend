@@ -22,7 +22,7 @@ function AuthorFeedPage() {
   useEffect(() => {
     setIsLoading(true);
     ky
-      .get("/api/search/" + searchQuery.get('q'))
+      .get("/api/search/" + searchQuery.get('q'), { timeout: 20000 })
       .json()
       .then(response => {
         setSearchStihs(response);

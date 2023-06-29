@@ -22,7 +22,7 @@ function AuthorFeedPage() {
   useEffect(() => {
     setIsLoading(true);
     ky
-      .get("/api/author/" + authorId + "/all")
+      .get("/api/author/" + authorId + "/all" , { timeout: 20000 })
       .json()
       .then((response) => {
         setAuthorStihs(response);

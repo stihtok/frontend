@@ -24,7 +24,7 @@ function AuthorPage() {
   useEffect(() => {
     setIsLoading(true);
     ky
-      .get("/api/author/" + authorId)
+      .get("/api/author/" + authorId, { timeout: 20000 })
       .json()
       .then((response) => {
         setAuthor(response);

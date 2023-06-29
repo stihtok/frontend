@@ -17,7 +17,7 @@ function MainApp() {
   let [isError, setIsError] = useState(false);
 
   const addStihsToBundle = () => {
-    ky.get("/api/bundle/")
+    ky.get("/api/bundle/", { timeout: 20000 })
     .json()
     .then (response => {
       let newBundle = []
@@ -37,7 +37,7 @@ function MainApp() {
   };
 
   useEffect(() => {
-    ky.get("/api/bundle/")
+    ky.get("/api/bundle/", { timeout: 20000 })
     .json()
     .then(response => {
       setBundle(response);
