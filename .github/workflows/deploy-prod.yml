@@ -1,0 +1,22 @@
+name: Deploy prod
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@main
+        with:
+            ref: ${{ github.ref_name }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19.x'
+      - run: npm install
+      - run: PUBLIC_URL=${{ secrets.PROD_URL }} npm run build || true
+      - run: rsync -aI --delete-after build/* /opt/prod/frontend/
