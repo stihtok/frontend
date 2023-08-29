@@ -4,11 +4,11 @@
 }
 
 .authorStihTitle {
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .authorStihTitle h2 {
@@ -21,7 +21,7 @@
     text-decoration: none;
     border-bottom: 2px dotted #000;
     font-size: 1.3em;
-    overflow: hidden;
+    overflow: visible;
     transition: all 0.45s ease-out;
 }
 
