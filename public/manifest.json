@@ -1,6 +1,9 @@
 {
+  "id": "1",
+  "lang": "ru",
   "short_name": "СтихТок",
-  "description": "Бесконечная поэзия",
+  "description": "Бесконечная лента стихов",
+  "categories": ["books", "education"],
   "name": "СтихТок",
   "icons": [
     {
