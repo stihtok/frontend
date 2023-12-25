@@ -23,6 +23,7 @@
     font-size: 1.3em;
     overflow: visible;
     transition: all 0.45s ease-out;
+    white-space: initial;
 }
 
 .authorStihTitle a:hover {
