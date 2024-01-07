@@ -10,11 +10,17 @@ import Navigation from "./Parts/Navigation";
 import AuthorDesc from "./AuthorDesc/AuthorDesc"
 import Loading from "./Loading";
 import ErrorPage from "./error-page";
+import { useLocation } from "react-router-dom";
 
 function AuthorsPage() {
   let [authors, setAuthors] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
   let [isError, setIsError] = useState(false);
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   useEffect(() => {
     setIsLoading(true);

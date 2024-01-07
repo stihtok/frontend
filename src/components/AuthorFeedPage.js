@@ -11,13 +11,18 @@ import Navigation from "./Parts/Navigation";
 import Stih from "./Stih/Stih";
 import Loading from "./Loading";
 import ErrorPage from "./error-page";
+import { useLocation } from "react-router-dom";
 
 function AuthorFeedPage() {
   let { authorId } = useParams();
   let [authorStihs, setAuthorStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
   let [isError, setIsError] = useState(false);
+  let location = useLocation();
 
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   useEffect(() => {
     setIsLoading(true);

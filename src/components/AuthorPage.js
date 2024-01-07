@@ -14,12 +14,18 @@ import Button from "./Parts/Button";
 import ErrorPage from "./error-page";
 import {Helmet} from "react-helmet";
 import Loading from "./Loading";
+import { useLocation } from "react-router-dom";
 
 function AuthorPage() {
   let { authorId } = useParams();
   let [author, setAuthor] = useState({});
   let [isLoading, setIsLoading] = useState(true);
   let [isError, setIsError] = useState(false);
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   useEffect(() => {
     setIsLoading(true);

@@ -12,12 +12,17 @@ import Stih from "./Stih/Stih";
 import "./SearchPage.css";
 import Loading from "./Loading";
 import AuthorDesc from "./AuthorDesc/AuthorDesc";
-
+import { useLocation } from "react-router-dom";
 
 function AuthorFeedPage() {
   let [searchQuery] = useSearchParams();
   let [searchObjects, setSearchObjects] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   useEffect(() => {
     setIsLoading(true);

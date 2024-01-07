@@ -9,12 +9,18 @@ import ky from "ky";
 import { createRef, useRef } from "react";
 import Navigation from "./Parts/Navigation";
 import ErrorPage from "./error-page";
+import { useLocation } from "react-router-dom";
 
 function MainApp() {
   let [bundle, setBundle] = useState([]);
   let lastItem = createRef();
   let observerLoader = useRef();
   let [isError, setIsError] = useState(false);
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   const addStihsToBundle = () => {
     ky.get("/api/bundle/", { timeout: 20000 })

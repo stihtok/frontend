@@ -11,12 +11,18 @@ import { useParams } from "react-router-dom";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import {Helmet} from "react-helmet";
+import { useLocation } from "react-router-dom";
 
 function SinglePage() {
 
   let { stihId } = useParams()
   let [stih, setStih] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   useEffect(() => {
     setIsLoading(true);

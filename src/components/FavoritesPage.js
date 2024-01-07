@@ -13,13 +13,18 @@ import Loading from "./Loading";
 import "./Stih/Like/Like.css";
 import arrow from './img/arrow.svg';
 import ErrorPage from "./error-page";
+import { useLocation } from "react-router-dom";
 
 function FavoritesPage() {
   let [likes, setLikes] = useState([]);
   let [likeStihs, setLikeStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
   let [isError, setIsError] = useState(false);
+  let location = useLocation();
 
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
   function getStihsFromApi() {
     likes.map(({stihId, id}) => {
       ky

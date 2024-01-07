@@ -8,10 +8,16 @@ import YearStihList from "./YearStihList/YearStihList";
 import Year from "./YearStihList/Year";
 import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
-
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function YearPage() {
   let { year } = useParams();
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname);
+  }, [location]);
 
   return (
     <div className="App">
