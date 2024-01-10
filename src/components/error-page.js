@@ -5,10 +5,19 @@ import Col from "react-bootstrap/Col";
 import Navigation from "./Parts/Navigation";
 import "./MainApp.css";
 import BackButton from "./Parts/BackButton";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
+  
+  let location = useLocation();
+
+  useEffect(() => {
+    window.ym(96058973, 'hit', location.pathname + location.search);
+  }, [location]);
+
 
   return (
     <div className="App">

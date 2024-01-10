@@ -21,7 +21,7 @@ function AuthorFeedPage() {
   let location = useLocation();
 
   useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname);
+    window.ym(96058973, 'hit', location.pathname + location.search);
   }, [location]);
 
   useEffect(() => {

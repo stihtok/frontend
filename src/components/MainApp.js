@@ -19,7 +19,8 @@ function MainApp() {
   let location = useLocation();
 
   useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname);
+    console.log(location.pathname + location.search);
+    window.ym(96058973, 'hit', location.pathname + location.search);
   }, [location]);
 
   const addStihsToBundle = () => {
