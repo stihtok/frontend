@@ -16,7 +16,6 @@ function InstallPage() {
   const [installable, setInstallable] = useState(false);
 
 
-  useEffect(() => {
     // PWA install prompt
     window.addEventListener("beforeinstallprompt", (e) => {
       // Prevent the mini-infobar from appearing on mobile
@@ -32,7 +31,7 @@ function InstallPage() {
       // Log install to analytics
       console.log('INSTALL: Success');
     });
-  }, []);
+
 
   const handleInstallClick = (e) => {
     // Hide the app provided install promotion
