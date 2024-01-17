@@ -114,3 +114,20 @@
 {
   transform: none;
 }
+
+.installLink {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 100px;
+}
+
+.installLink li {
+  color: #989898;
+}
+
+@media (display-mode: browser) {
+  .installLink {
+    display: block
+  }
+}

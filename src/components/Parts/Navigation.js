@@ -33,6 +33,7 @@ function Navigation(props) {
             <NavLink onClick={e => navClick("/")}><li>Главная</li></NavLink>
             <NavLink onClick={e => navClick("/authors")}><li>Авторы</li></NavLink>
             <NavLink onClick={e => navClick("/favorites")}><li>Уголки</li></NavLink>
+            <NavLink className="installLink" onClick={e => navClick("/install")}><li>Приложение</li></NavLink>
 
             </ul>
         </div>

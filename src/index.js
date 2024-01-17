@@ -11,6 +11,7 @@ import AuthorsPage from "./components/AuthorsPage";
 import AuthorFeedPage from "./components/AuthorFeedPage";
 import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
+import InstallPage from "./components/InstallPage";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
   {
     path: "/favorites/",
     element: <FavoritesPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/install",
+    element: <InstallPage />,
     errorElement: <ErrorPage />,
   },
 ]);

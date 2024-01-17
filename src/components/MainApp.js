@@ -19,7 +19,6 @@ function MainApp() {
   let location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname + location.search);
     window.ym(96058973, 'hit', location.pathname + location.search);
   }, [location]);
 
