@@ -82,7 +82,7 @@ function InstallPage() {
 
   function InstallButton() {
     return(
-      <button className="installButton">
+      <button className="installButton" onClick={handleInstallClick}>
         <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
       </button>
       )
