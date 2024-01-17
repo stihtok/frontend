@@ -7,10 +7,8 @@ import Navigation from "./Parts/Navigation";
 import BackButton from "./Parts/BackButton";
 import share from './img/share.png';
 import qr from './img/install-qr.png';
+import { useEffect } from "react";
 import { useState } from "react";
-import androidIcon from "./img/android.png";
-import actionMenu from "./img/actionMenu.png";
-
 
 let deferredPrompt; 
 
@@ -98,19 +96,12 @@ function InstallPage() {
         <Container fluid>
           <Row className="justify-content-center">
             <Col xs="auto">
-                <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>Для установки нажмите на кнопку: <br /><br /></p>
-                { installable ??
-                  <button className="installButton" onClick={handleInstallClick}>
-                    <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
+                <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>Установка СтихТок на Android: <br /><br />
+                {installable &&
+                  <button className="install-button" onClick={handleInstallClick}>
+                    INSTALL ME
                   </button>
                 }
-                 <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>
-                    или:
-                 <ol>
-                  <li>Зайдите в меню браузера <img style={{width:"25px", marginTop:"-10px"}} src={actionMenu} /></li>
-                  <li>Выберите пункт <b>Установить приложение</b></li>
-                  <li>Нажмите <b>Установить</b></li>
-                </ol>
                 </p>
             </Col>
           </Row>
