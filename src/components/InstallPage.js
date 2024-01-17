@@ -17,7 +17,6 @@ let deferredPrompt;
 function InstallPage() {
   let [installable, setInstallable] = useState(false);
   let [installed, setInstalled] = useState(false);
-
     // PWA install prompt
     window.addEventListener("beforeinstallprompt", (e) => {
       // Prevent the mini-infobar from appearing on mobile
@@ -31,7 +30,7 @@ function InstallPage() {
 
     window.addEventListener('appinstalled', () => {
       // Log install to analytics
-      console.log('INSTALL: Success');
+      alert('INSTALL: Success');
       setInstalled(true);
     });
 
