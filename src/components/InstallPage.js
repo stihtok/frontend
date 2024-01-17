@@ -6,23 +6,48 @@ import Col from "react-bootstrap/Col";
 import Navigation from "./Parts/Navigation";
 import BackButton from "./Parts/BackButton";
 import share from './img/share.png';
+import qr from './img/install-qr.png';
+import { useEffect } from "react";
+import { useState } from "react";
+
+let deferredPrompt; 
 
 function InstallPage() {
-  var beforeInstallPrompt = null;
-  window.addEventListener("beforeinstallprompt", eventHandler, errorHandler);
-  
-  function eventHandler(event){
-      beforeInstallPrompt = event;   
-      document.getElementById('installBtn').removeAttribute('disabled');
+  const [installable, setInstallable] = useState(false);
 
-  }
-  function errorHandler(e){
-      console.log('error: ' + e);
-  }
 
-  function install() {
-    if (window.beforeInstallEvent) beforeInstallPrompt.prompt();
-}
+  useEffect(() => {
+    // PWA install prompt
+    window.addEventListener("beforeinstallprompt", (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can install the PWA
+      setInstallable(true);
+      console.log(installable);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      // Log install to analytics
+      console.log('INSTALL: Success');
+    });
+  }, []);
+
+  const handleInstallClick = (e) => {
+    // Hide the app provided install promotion
+    setInstallable(false);
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+};
 
   function isIos () {
     if (navigator.standalone) {
@@ -73,13 +98,24 @@ function InstallPage() {
           <Row className="justify-content-center">
             <Col xs="auto">
                 <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>Установка СтихТок на Android: <br /><br />
-                   <button id="installBtn" onclick="install()" disabled > 
-                      Install PWA 
-                  </button> 
+                {installable &&
+                  <button className="install-button" onClick={handleInstallClick}>
+                    INSTALL ME
+                  </button>
+                }
                 </p>
             </Col>
           </Row>
         </Container>
+      );
+    }
+  }
+
+  function QR() {
+    if (!(isIos() || isAndroid())) {
+      return (
+        <p style={{marginTop:"50px"}}>Откройте эту страницу в браузере на смартфоне <br /><br />
+        <img src={qr} style={{width:"200px"}} /></p>
       );
     }
   }
@@ -93,6 +129,7 @@ function InstallPage() {
             <Row className="justify-content-center">
               <Col xs="auto">
                   <h1 style={{textAlign: "center"}}>Приложение</h1>
+                  <QR />
                   <IosPrompt />
                   <AndroidPrompt />
               </Col>
