@@ -106,7 +106,7 @@ function InstallPage() {
           <Row className="justify-content-center">
             <Col xs="auto">
                 <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>Для установки нажмите на кнопку: <br /><br /></p>
-                { installable ??
+                { installable &&
                   <InstallButton />
                 }
                  <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>
