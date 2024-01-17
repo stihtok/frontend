@@ -17,6 +17,7 @@ let deferredPrompt;
 function InstallPage() {
   let [installable, setInstallable] = useState(false);
   let [installed, setInstalled] = useState(false);
+
     // PWA install prompt
     window.addEventListener("beforeinstallprompt", (e) => {
       // Prevent the mini-infobar from appearing on mobile
@@ -71,20 +72,20 @@ function InstallPage() {
     return isAndroid;
   }
 
-  function InstallButton() {
-    if (installed) {
-      return (
-        <p style={{color:"green"}}>
-          👍 Приложение установлено
-        </p>
-      )
-    } else {
+  function InstallConfirm() {
     return(
-      <button className="installButton" onClick={handleInstallClick}>
+      <button className="installButton" disabled >
+        👍 Приложение установлено
+      </button>
+      )
+  }
+
+  function InstallButton() {
+    return(
+      <button className="installButton" style={{width:"24px", marginTop:"-3px"}}>
         <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
       </button>
       )
-    }
   }
 
   function IosPrompt() {
@@ -117,6 +118,7 @@ function InstallPage() {
                 { installable &&
                   <InstallButton />
                 }
+                { installed ? <InstallConfirm /> : null }
                  <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>
                     или:
                  <ol>

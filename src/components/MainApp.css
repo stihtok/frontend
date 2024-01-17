@@ -74,6 +74,12 @@
   transition: all 0.2s ease;
 }
 
+.installButton:disabled {
+  background-color: #00ba22;
+  border: 1px solid #00ba22;
+  color: #ffffff;
+}
+
 .installButton:hover {
   background-color: #dbdbdb;
   text-decoration: none;
