@@ -74,7 +74,7 @@ function InstallPage() {
 
   function InstallConfirm() {
     return(
-      <button className="installButton" disabled >
+      <button className="installedButton">
         👍 Приложение установлено
       </button>
       )
@@ -82,7 +82,7 @@ function InstallPage() {
 
   function InstallButton() {
     return(
-      <button className="installButton" style={{width:"24px", marginTop:"-3px"}}>
+      <button className="installButton">
         <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
       </button>
       )

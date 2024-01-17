@@ -74,10 +74,26 @@
   transition: all 0.2s ease;
 }
 
-.installButton:disabled {
-  background-color: #00ba22;
-  border: 1px solid #00ba22;
+.installedButton {
+  background-color: #07b015;
+  border: 1px solid #07b015;
   color: #ffffff;
+  border-radius: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  min-height: 35px;
+  transition: all 0.2s ease;
 }
 
 .installButton:hover {
