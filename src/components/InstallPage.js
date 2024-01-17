@@ -31,7 +31,6 @@ function InstallPage() {
 
     window.addEventListener('appinstalled', () => {
       // Log install to analytics
-      alert('INSTALL: Success');
       setInstalled(true);
     });
 
