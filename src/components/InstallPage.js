@@ -10,6 +10,7 @@ import qr from './img/install-qr.png';
 import { useState } from "react";
 import androidIcon from "./img/android.png";
 import actionMenu from "./img/actionMenu.png";
+import arrow from './img/arrow.png';
 
 
 let deferredPrompt; 
@@ -100,6 +101,7 @@ function InstallPage() {
                   <li>Нажмите <b>Добавить</b></li>
                 </ol>
                 </p>
+                <img src={arrow} style={{width: "20px", position:"absolute", bottom:"0", marginBottom:"10px", marginLeft:"-10px"}} />
             </Col>
           </Row>
         </Container>
@@ -143,11 +145,11 @@ function InstallPage() {
   }
 
   return (
-    <div className="App">
+    <div>
       <Navigation />
       <BackButton />
       <div className="install-page center">
-      <Container fluid>
+      <Container>
             <Row className="justify-content-center">
               <Col xs="auto">
                   <h1 style={{textAlign: "center"}}>Приложение</h1>
