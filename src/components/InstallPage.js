@@ -71,6 +71,13 @@ function InstallPage() {
     return isAndroid;
   }
 
+  function InstallButton() {
+    return(
+      <button className="installButton" onClick={handleInstallClick}>
+        <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
+      </button>
+    )
+  }
 
   function IosPrompt() {
     if (isIos()) {
@@ -81,7 +88,7 @@ function InstallPage() {
                 <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>Установка СтихТок на iOS: <br /><br />
                 <ol>
                   <li>Нажмите <b>Поделиться</b> в браузере <img src={share} style={{width:"30px", marginTop:"-10px"}} /></li>
-                  <li>Выберите пункт <b>На эркан «Домой»</b></li>
+                  <li>Выберите <b>На эркан «Домой»</b></li>
                   <li>Нажмите <b>Добавить</b></li>
                 </ol>
                 </p>
@@ -100,15 +107,13 @@ function InstallPage() {
             <Col xs="auto">
                 <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>Для установки нажмите на кнопку: <br /><br /></p>
                 { installable ??
-                  <button className="installButton" onClick={handleInstallClick}>
-                    <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
-                  </button>
+                  <InstallButton />
                 }
                  <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "left"}}>
                     или:
                  <ol>
-                  <li>Зайдите в меню браузера <img style={{width:"25px", marginTop:"-10px"}} src={actionMenu} /></li>
-                  <li>Выберите пункт <b>Установить приложение</b></li>
+                  <li>Зайдите в меню браузера <img style={{width:"20px", marginTop:"-10px"}} src={actionMenu} /></li>
+                  <li>Выберите <b>Установить приложение</b></li>
                   <li>Нажмите <b>Установить</b></li>
                 </ol>
                 </p>
