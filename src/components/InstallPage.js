@@ -15,8 +15,8 @@ import actionMenu from "./img/actionMenu.png";
 let deferredPrompt; 
 
 function InstallPage() {
-  const [installable, setInstallable] = useState(false);
-
+  let [installable, setInstallable] = useState(false);
+  let [installed, setInstalled] = useState(false);
 
     // PWA install prompt
     window.addEventListener("beforeinstallprompt", (e) => {
@@ -32,6 +32,7 @@ function InstallPage() {
     window.addEventListener('appinstalled', () => {
       // Log install to analytics
       console.log('INSTALL: Success');
+      setInstalled(true);
     });
 
 
@@ -72,11 +73,19 @@ function InstallPage() {
   }
 
   function InstallButton() {
+    if (installed) {
+      return (
+        <p style={{color:"green"}}>
+          👍 Приложение установлено
+        </p>
+      )
+    } else {
     return(
       <button className="installButton" onClick={handleInstallClick}>
         <img style={{width:"24px", marginTop:"-3px", paddingRight:"3px"}} src={androidIcon} /> Установить
       </button>
-    )
+      )
+    }
   }
 
   function IosPrompt() {
