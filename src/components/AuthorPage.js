@@ -67,6 +67,8 @@ function AuthorPage() {
     if (isLoading) {
         return (<Loading />)
     } else {
+      window.scrollTo(0, 1);
+      window.scrollTo(0, 0);
       return (
         <>
           <AuthorDesc description={author.description} photo={author.photo} name={author.name}/>
