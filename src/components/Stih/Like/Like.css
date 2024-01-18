@@ -9,7 +9,7 @@
     opacity: 0;
     z-index: 1;
     -webkit-touch-callout: none;
-    /* position: relative; */
+    position: relative;
     top: 0px;
     left: 85%;
     margin-top:10px;
@@ -39,7 +39,7 @@
     transition: clip-path 0.5s;
     top: -3em;
     left: 87%;
-    /* position: relative; */
+    position: relative;
 }
 
 .like-triangle-inner{

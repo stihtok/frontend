@@ -63,7 +63,7 @@
   font-size: 16px;
   line-height: 29px;
   padding: 0 10px 0 11px;
-  /* position: relative; */
+  position: relative;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -85,7 +85,7 @@
   font-size: 16px;
   line-height: 29px;
   padding: 0 10px 0 11px;
-  /* position: relative; */
+  position: relative;
   text-align: center;
   text-decoration: none;
   user-select: none;
