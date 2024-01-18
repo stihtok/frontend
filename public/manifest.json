@@ -22,7 +22,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/?utm_source=pwa",
+  "start_url": "/?mode=pwa",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#ffffff",
