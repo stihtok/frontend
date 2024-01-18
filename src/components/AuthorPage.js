@@ -55,7 +55,8 @@ function AuthorPage() {
         <meta name="twitter:title" content={author.name} />
         <meta name="twitter:description" content="Все стихотворения автора" />
         <meta name="twitter:image" content={author.photo} />
-
+        
+        <meta name="description" content={author.name} />
       </Helmet>
       )
     } else {

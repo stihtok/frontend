@@ -50,6 +50,8 @@ function SinglePage() {
         <meta name="twitter:title" content={stih.author.name} />
         <meta name="twitter:description" content={stih.title} />
         <meta name="twitter:image" content={stih.author.photo} />
+
+        <meta name="description" content={stih.title} />
       </Helmet>
       )
     } else {
