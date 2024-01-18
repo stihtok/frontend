@@ -67,6 +67,7 @@ function AuthorPage() {
     if (isLoading) {
         return (<Loading />)
     } else {
+      // Fix bug on iOS PWA https://github.com/vuejs/vue/issues/5533
       window.scrollTo(0, 1);
       window.scrollTo(0, 0);
       return (
