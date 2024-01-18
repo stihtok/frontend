@@ -35,7 +35,7 @@ function AuthorStihList(props) {
         <div className="authorStihList">
         {stihs.filter(stih => stih.title.toString().toLowerCase().includes(searchString.toLowerCase())).map((stih) => {
           return (
-            <div key={stih.id}>
+            <div id={stih.id} key={stih.id}>
               <AuthorStihTitle id={stih.id} title={stih.title} />
             </div>
           )

@@ -3,8 +3,8 @@ import "./MainApp.css"
 
 function Loading() {
     return (
-        <div class="cell">
-            <div class="pl pl-origami"></div>
+        <div className="cell">
+            <div className="pl pl-origami"></div>
 	    </div>
     )
 }
