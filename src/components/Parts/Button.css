@@ -1,14 +1,14 @@
 .button {
-    background-color: #efefef;
-    border: 2px solid #efefef;
-    border-radius: 15px;
+    background-color: #f6f6f6;
+    border: 1px solid #c6c4c4;
+    border-radius: 30px;
     box-sizing: border-box;
     color: #000000;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
-    line-height: 29px;
-    padding: 0 10px 0 11px;
+    line-height: 32px;
+    padding: 0 20px 0 20px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -21,9 +21,9 @@
 }
 
 .button:hover {
-    background-color: #dbdbdb;
+    background-color: #f6f6f6;
     text-decoration: none;
-    border: 2px solid #dbdbdb;
+    border: 1px solid #595959;
     color: #000000;
 }
 
