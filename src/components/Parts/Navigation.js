@@ -4,7 +4,6 @@ import Search from './Search';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-
 function Navigation(props) {
     let [menu, setMenu] = useState(false);
     let navigate = useNavigate();
@@ -33,10 +32,12 @@ function Navigation(props) {
             <NavLink onClick={e => navClick("/")}><li>Главная</li></NavLink>
             <NavLink onClick={e => navClick("/authors")}><li>Авторы</li></NavLink>
             <NavLink onClick={e => navClick("/favorites")}><li>Уголки</li></NavLink>
-            <NavLink className="installLink" onClick={e => navClick("/install")}><li>Приложение</li></NavLink>
+            <hr className='navHr'/>
+            <NavLink onClick={e => navClick("/install")}><li>Приложение</li></NavLink>
 
             </ul>
         </div>
+
         </nav>
     )
 }

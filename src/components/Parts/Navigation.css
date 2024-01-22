@@ -115,16 +115,10 @@
   transform: none;
 }
 
-.installLink {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 100px;
+.navHr {
+  margin-top: 200px;
 }
 
-.installLink li {
-  color: #989898;
-}
 
 @media (display-mode: browser) {
   .installLink {
