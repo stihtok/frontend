@@ -117,11 +117,19 @@
 
 .navHr {
   margin-top: 200px;
+  display: none;
 }
 
+.installLink {
+  display: none;
+}
 
 @media (display-mode: browser) {
   .installLink {
     display: block
+  }
+
+  .navHr {
+    display: block;
   }
 }
