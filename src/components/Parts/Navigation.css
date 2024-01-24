@@ -83,6 +83,9 @@
 
 #menu
 {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: block;
   user-select: none;
   -webkit-user-select: none;
   margin-top: -15px;
