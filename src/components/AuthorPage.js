@@ -15,6 +15,7 @@ import ErrorPage from "./error-page";
 import {Helmet} from "react-helmet";
 import Loading from "./Loading";
 import { useLocation } from "react-router-dom";
+import Animation from "./Animation";
 
 function AuthorPage() {
   let { authorId } = useParams();
@@ -89,11 +90,13 @@ function AuthorPage() {
       <Navigation />
       <MetaTags />
       <Container fluid>
-        <Row className="justify-content-center">
+      <Animation>
+        <Row className="justify-content-center animated">
           <Col xs="auto" md="5" lg="4" xl="4">
-            <PageContent />
+              <PageContent />
           </Col>
         </Row>
+        </Animation>
       </Container>
     </div>
   );

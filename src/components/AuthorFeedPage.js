@@ -12,6 +12,7 @@ import Stih from "./Stih/Stih";
 import Loading from "./Loading";
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
+import Animation from "./Animation";
 
 function AuthorFeedPage() {
   let { authorId } = useParams();
@@ -60,11 +61,14 @@ function AuthorFeedPage() {
       <BackButton />
       <Navigation />
       <Container fluid>
-          <Col xs="auto">
-            {isLoading ? <Loading /> : <Feed />}
-          </Col>
+        <Animation>
+        <Col xs="auto">
+          {isLoading ? <Loading /> : <Feed />}
+        </Col>
+        </Animation>
       </Container>
     </div>
+    
   );
 }
 

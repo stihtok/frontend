@@ -10,6 +10,7 @@ import { createRef, useRef } from "react";
 import Navigation from "./Parts/Navigation";
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
+import Animation from "./Animation";
 
 function MainApp() {
   let [bundle, setBundle] = useState([]);
@@ -68,11 +69,24 @@ function MainApp() {
   if (isError) return <ErrorPage />
 
   return (
-    <div className="App">
-      <Navigation />
-      <Container fluid>
-        {bundle.map((stih, index) => {
-          if (index + 1 === bundle.lenght) {
+      <div className="App">
+        <Navigation />
+        <Container fluid>
+        <Animation>
+          {bundle.map((stih, index) => {
+            if (index + 1 === bundle.lenght) {
+              return (
+                <Row
+                  key={stih.id}
+                  ref={lastItem}
+                  className="justify-content-center page"
+                >
+                  <Col xs="auto">
+                    <Stih stih={stih} />
+                  </Col>
+                </Row>
+              );
+            }
             return (
               <Row
                 key={stih.id}
@@ -84,21 +98,10 @@ function MainApp() {
                 </Col>
               </Row>
             );
-          }
-          return (
-            <Row
-              key={stih.id}
-              ref={lastItem}
-              className="justify-content-center page"
-            >
-              <Col xs="auto">
-                <Stih stih={stih} />
-              </Col>
-            </Row>
-          );
-        })}
-      </Container>
-    </div>
+          })}
+        </Animation>
+        </Container>
+      </div>
   );
 }
 

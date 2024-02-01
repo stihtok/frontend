@@ -8,4 +8,5 @@
   scroll-margin-bottom: 40vh;
   --webkit-overflow-scrolling: touch;
   font-family: NotoSerif, serif;
+  will-change: opacity;
 }

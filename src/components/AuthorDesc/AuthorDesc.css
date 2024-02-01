@@ -4,6 +4,7 @@
     font-family: Cormorant;
     font-size: 2.3em;
     margin-bottom: 40px;
+    will-change: opacity;
 }
 
 .authorDesc h1 {

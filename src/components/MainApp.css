@@ -8,6 +8,7 @@
 
 .page {
   border-bottom: 10px solid #fafafa;
+  will-change: opacity;
 }
 
 .List
@@ -105,4 +106,8 @@
 
 .installButton:focus {
   outline: 0;
+}
+
+.animated {
+  will-change: opacity;
 }

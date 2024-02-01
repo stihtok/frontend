@@ -11,6 +11,7 @@ import AuthorDesc from "./AuthorDesc/AuthorDesc"
 import Loading from "./Loading";
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
+import Animation from "./Animation";
 
 function AuthorsPage() {
   let [authors, setAuthors] = useState([]);
@@ -44,14 +45,16 @@ function AuthorsPage() {
       <Container fluid>
       <Navigation />
       <BackButton />
+      <Animation>
         <Row className="justify-content-center">
           <Col xs="auto">
-            {authors.map((author, id) => {
-              return <AuthorDesc name={author.name} photo={author.photo} id={author.id}/>
-            })
-          }
+              {authors.map((author, id) => {
+                return <AuthorDesc name={author.name} photo={author.photo} id={author.id}/>
+              })
+            }
           </Col>
         </Row>
+        </Animation>
       </Container>
     </div>
   );

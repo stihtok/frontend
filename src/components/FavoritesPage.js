@@ -14,6 +14,7 @@ import "./Stih/Like/Like.css";
 import arrow from './img/arrow.svg';
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
+import Animation from "./Animation";
 
 function FavoritesPage() {
   let [likes, setLikes] = useState([]);
@@ -85,14 +86,17 @@ function FavoritesPage() {
   if (isError) return <ErrorPage />
 
   return (
+    
     <div className="App">
       <Navigation />
       <BackButton />
+      <Animation>
       <Container fluid>
           <Col xs="auto">
           {isLoading ? <Loading /> : <LikeStihsFeed />}
           </Col>
       </Container>
+      </Animation>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import {Helmet} from "react-helmet";
 import { useLocation } from "react-router-dom";
+import Animation from "./Animation";
 
 function SinglePage() {
 
@@ -61,15 +62,19 @@ function SinglePage() {
 
 
   return (
+    
     <div className="Single">
       <MetaTags />
       <Container fluid>
         <Navigation />
+        <BackButton />
+        <Animation>
         <Row className="justify-content-center">
           <Col xs="auto">
-            <BackButton />
-            {isLoading ? <Loading /> : <Stih stih={stih} />}</Col>
+            {isLoading ? <Loading /> : <Stih stih={stih} />}
+          </Col>
         </Row>
+        </Animation>
       </Container>
     </div>
   );

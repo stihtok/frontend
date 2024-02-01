@@ -10,6 +10,7 @@ import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Animation from "./Animation";
 
 function YearPage() {
   let { year } = useParams();
@@ -20,14 +21,17 @@ function YearPage() {
   }, [location]);
 
   return (
+    
     <div className="App">
       <Navigation />
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs="auto">
             <BackButton />
+            <Animation>
             <Year year={year} />
             <YearStihList year={year} />
+            </Animation>
           </Col>
         </Row>
       </Container>

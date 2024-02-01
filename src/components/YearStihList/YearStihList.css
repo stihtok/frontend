@@ -1,5 +1,6 @@
 .yearStihList {
     padding-left: 10px;
+    will-change: opacity;
 }
 .yearAuthor {
     padding-top: 50px;
