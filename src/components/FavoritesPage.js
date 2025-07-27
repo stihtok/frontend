@@ -23,9 +23,6 @@ function FavoritesPage() {
   let [isError, setIsError] = useState(false);
   let location = useLocation();
 
-  useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname + location.search);
-  }, [location]);
   function getStihsFromApi() {
     likes.map(({stihId, id}) => {
       ky

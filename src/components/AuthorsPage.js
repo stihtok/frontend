@@ -20,10 +20,6 @@ function AuthorsPage() {
   let location = useLocation();
 
   useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname + location.search);
-  }, [location]);
-
-  useEffect(() => {
     setIsLoading(true);
     ky
       .get("/api/authors/", { timeout: 20000 })

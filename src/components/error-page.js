@@ -14,10 +14,6 @@ export default function ErrorPage() {
   
   let location = useLocation();
 
-  useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname + location.search);
-  }, [location]);
-
 
   return (
     <div className="App">

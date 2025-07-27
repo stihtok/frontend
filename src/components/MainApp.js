@@ -19,9 +19,6 @@ function MainApp() {
   let [isError, setIsError] = useState(false);
   let location = useLocation();
 
-  useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname + location.search);
-  }, [location]);
 
   const addStihsToBundle = () => {
     ky.get("/api/bundle/", { timeout: 20000 })

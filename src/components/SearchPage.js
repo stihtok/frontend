@@ -21,10 +21,6 @@ function AuthorFeedPage() {
   let location = useLocation();
 
   useEffect(() => {
-    window.ym(96058973, 'hit', location.pathname + location.search);
-  }, [location]);
-
-  useEffect(() => {
     setIsLoading(true);
     ky
       .get("/api/search/" + searchQuery.get('q'), { timeout: 20000 })
