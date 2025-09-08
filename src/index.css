@@ -40,6 +40,18 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url(./components/fonts/Roboto-Light.ttf) format("truetype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url(./components/fonts/Roboto-ExtraLight.ttf) format("truetype");
+  font-weight: 200;
+}
+
+
 * {
   padding: 0;
   margin: 0;
@@ -53,4 +65,11 @@
 html, body {
 
 }
+
+body::selection {
+  color: rgb(0, 0, 0);
+  background-color: #ffe66a;
+}
+
+
 

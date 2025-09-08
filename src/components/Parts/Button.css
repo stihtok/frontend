@@ -7,8 +7,8 @@
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
-    line-height: 32px;
-    padding: 0 20px 0 20px;
+    line-height: 38px;
+    padding: 0 25px 0 25px;
     /* position: relative; */
     text-align: center;
     text-decoration: none;
@@ -16,8 +16,10 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    min-height: 35px;
+    min-height: 38px;
     transition: all 0.2s ease;
+    font-family: 'Roboto';
+    font-weight: 300;
 }
 
 .button:hover {

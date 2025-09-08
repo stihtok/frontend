@@ -1,0 +1,98 @@
+.tag {
+    background-color: #ffffff;
+    border: 1px solid #c6c4c4;
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+    padding: 0 30px 0 30px;
+    /* position: relative; */
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    min-height: 38px;
+    font-family: 'Roboto';
+    font-weight: 200;
+    margin: 10px;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
+
+}
+
+.tag:hover {
+    background-color: #f6f6f6;
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    opacity: 1;
+    transition:  all 0.4s ease;
+}
+
+.tag:active {
+    background-color: #f6f6f6;
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.tag.selected {
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    opacity: 1;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
+}
+
+.tag.selected:hover {
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    opacity: 1;
+    text-transform: capitalize;
+        transition: all 0.4s ease;
+
+    
+}
+.tag.selected:active {
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    opacity: 1;
+    text-transform: capitalize;
+        transition: all 0.4s ease;
+
+    
+}
+
+@media (hover: none) {
+    .tag:hover {
+        background-color: inherit;
+    }
+}
+
+.tag:focus {
+    outline: 0;
+}
+
+.vibes {
+  padding-top: 50px;
+  scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-bottom: 40vh;
+    border-bottom: 1px solid rgb(182, 182, 182);
+    padding-bottom: 40px;
+    background: linear-gradient(45deg, #dfebf3, #f8cccc);
+    transition: all 0.8s ease-in;
+}

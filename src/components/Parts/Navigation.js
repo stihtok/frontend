@@ -32,6 +32,7 @@ function Navigation(props) {
             <NavLink onClick={e => navClick("/")}><li>Главная</li></NavLink>
             <NavLink onClick={e => navClick("/authors")}><li>Авторы</li></NavLink>
             <NavLink onClick={e => navClick("/favorites")}><li>Уголки</li></NavLink>
+            <NavLink onClick={e => navClick("/vibes")}><li>Настроения</li></NavLink>
             <hr className='navHr'/>
             <a className='installLink' href="/install"><li>Приложение</li></a>
 

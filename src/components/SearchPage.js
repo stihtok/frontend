@@ -40,7 +40,7 @@ function AuthorFeedPage() {
       return (
         <Row className="justify-content-center page">
           <Col xs="auto">
-            <Stih stih={object} />
+            <Stih stih={object} highlight={searchQuery.get('q')} />
           </Col>
         </Row>
       )} else {

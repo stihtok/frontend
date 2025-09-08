@@ -14,7 +14,7 @@ const Stih = forwardRef((props, ref) => {
         <Author id={props.stih.author.id} author={props.stih.author.name} authorImg={props.stih.author.photo}/>
         <Title id={props.stih.id} title={props.stih.title}/>
         <Epigraph epigraph={props.stih.epigraph}/>
-        <Body body={props.stih.body}/>
+        <Body body={props.stih.body} highlight={props.highlight}/>
         <Date date={props.stih.createdAt} />
         <Like id={props.stih.id}/>
     </div>

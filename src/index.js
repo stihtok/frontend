@@ -12,6 +12,8 @@ import AuthorFeedPage from "./components/AuthorFeedPage";
 import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
 import InstallPage from "./components/InstallPage";
+import VibesPage from "./components/VibesPage";
+import VibePage from "./components/VibePage";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,16 @@ const router = createBrowserRouter([
   {
     path: "/favorites/",
     element: <FavoritesPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/vibes/",
+    element: <VibesPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/vibe/:vibeId",
+    element: <VibePage />,
     errorElement: <ErrorPage />,
   },
   {
