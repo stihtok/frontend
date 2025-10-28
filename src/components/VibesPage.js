@@ -69,8 +69,6 @@ function VibesPage() {
 
   function handleTagClick(vibeId) {
 
-    const vibeBack = document.getElementById('vibeBack').classList.add('selected');
-
       setSelectedVibes(prev => {
       if (prev.includes(vibeId)) {
         // Удаляем тег, если он уже выбран

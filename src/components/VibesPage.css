@@ -1,6 +1,6 @@
 .tag {
     background-color: #ffffff;
-    border: 1px solid #c6c4c4;
+    border: 1px solid #6b6b6b;
     border-radius: 30px;
     box-sizing: border-box;
     color: #000000;
@@ -22,7 +22,6 @@
     margin: 10px;
     text-transform: capitalize;
     transition: all 0.4s ease;
-
 }
 
 .tag:hover {
@@ -30,7 +29,6 @@
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
     transition:  all 0.4s ease;
 }
 
@@ -39,7 +37,6 @@
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
     transition: all 0.4s ease;
 }
 
@@ -48,42 +45,29 @@
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
     text-transform: capitalize;
     transition: all 0.4s ease;
 }
 
-.tag.selected:hover {
-    background: linear-gradient(178deg, #ffe791, #ffd66a);
-    text-decoration: none;
-    border: 1px solid #595959;
-    color: #000000;
-    opacity: 1;
-    text-transform: capitalize;
-        transition: all 0.4s ease;
-
-    
-}
 .tag.selected:active {
     background: linear-gradient(178deg, #ffe791, #ffd66a);
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
     text-transform: capitalize;
-        transition: all 0.4s ease;
-
-    
+    transition: all 0.4s ease;
 }
-
-@media (hover: none) {
-    .tag:hover {
-        background-color: inherit;
-    }
+.tag.selected:hover {
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
 }
 
 .tag:focus {
-    outline: 0;
+    outline: none;
 }
 
 .vibes {
@@ -93,6 +77,32 @@
     scroll-margin-bottom: 40vh;
     border-bottom: 1px solid rgb(182, 182, 182);
     padding-bottom: 40px;
-    background: linear-gradient(45deg, #dfebf3, #f8cccc);
-    transition: all 0.8s ease-in;
+    background: linear-gradient(224deg, #ffb6a0, #ffaccc, #96e3ff, #ffb8b8);
+    background-size: 800% 800%;
+
+    -webkit-animation: VibesGradient 39s ease infinite;
+    -moz-animation: VibesGradient 39s ease infinite;
+    -o-animation: VibesGradient 39s ease infinite;
+    animation: VibesGradient 39s ease infinite;
+}
+
+@-webkit-keyframes VibesGradient {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+}
+@-moz-keyframes VibesGradient {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+}
+@-o-keyframes VibesGradient {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
+}
+@keyframes VibesGradient {
+    0%{background-position:0% 55%}
+    50%{background-position:100% 46%}
+    100%{background-position:0% 55%}
 }
