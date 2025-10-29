@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Navigation.css';
 import Search from './Search';
 import { NavLink } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Navigation(props) {
     let [menu, setMenu] = useState(false);
     let navigate = useNavigate();
+    let location = useLocation();
 
     function openClose() {
         setMenu(current => !current);
@@ -17,6 +18,15 @@ function Navigation(props) {
         await new Promise(r => setTimeout(r, 250));
         navigate(url);
     }
+
+   useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
     return (
         <nav role="navigation">
@@ -32,7 +42,7 @@ function Navigation(props) {
             <NavLink onClick={e => navClick("/")}><li>Главная</li></NavLink>
             <NavLink onClick={e => navClick("/authors")}><li>Авторы</li></NavLink>
             <NavLink onClick={e => navClick("/favorites")}><li>Уголки</li></NavLink>
-            <NavLink onClick={e => navClick("/vibes")}><li>Настроения</li></NavLink>
+            <NavLink onClick={e => navClick("/vibes#start")}><li>Настроения</li></NavLink>
             <hr className='navHr'/>
             <a className='installLink' href="/install"><li>Приложение</li></a>
 
