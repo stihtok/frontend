@@ -1,6 +1,6 @@
 .tag {
     background-color: #ffffff;
-    border: 1px solid #8e8e8e;
+    border: 1px solid #6b6b6b;
     border-radius: 30px;
     box-sizing: border-box;
     color: #000000;
@@ -9,8 +9,7 @@
     font-size: 20px;
     line-height: 40px;
     padding: 0 30px 0 30px;
-    position: relative;
-    overflow: hidden;
+    /* position: relative; */
     text-align: center;
     text-decoration: none;
     user-select: none;
@@ -22,29 +21,7 @@
     font-weight: 200;
     margin: 10px;
     text-transform: capitalize;
-    transition: all 0.1s ease-in;
-
-}
-
-/* Gradient layer for smooth fade */
-.tag::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: inherit;
-    background: linear-gradient(178deg, #ffe791, #fdd160);
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
-    pointer-events: none;
-}
-
-/* Ensure label stays above overlay */
-.tag .tag-label {
-    position: relative;
-    z-index: 1;
+    transition: all 0.4s ease;
 }
 
 .tag:hover {
@@ -52,8 +29,7 @@
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
-    transition: all 0.1s ease-in;
+    transition:  all 0.4s ease;
 }
 
 .tag:active {
@@ -61,46 +37,37 @@
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
-    transition: all 0.1s ease-in;
+    transition: all 0.4s ease;
 }
 
 .tag.selected {
-    /* gradient shown via ::before */
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
-    transition: all 0.1s ease-in;
-}
-
-.tag.selected::before {
-    opacity: 1;
-}
-
-.tag.selected:hover {
-    /* keep gradient visible */
-    text-decoration: none;
-    border: 1px solid #595959;
-    color: #000000;
-    opacity: 1;
-        transition: all 0.1s ease-in;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
 }
 
 .tag.selected:active {
-    /* keep gradient visible */
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
     text-decoration: none;
     border: 1px solid #595959;
     color: #000000;
-    opacity: 1;
-    transition: all 0.1s ease-in;
-
+    text-transform: capitalize;
+    transition: all 0.4s ease;
+}
+.tag.selected:hover {
+    background: linear-gradient(178deg, #ffe791, #ffd66a);
+    text-decoration: none;
+    border: 1px solid #595959;
+    color: #000000;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
 }
 
-
-
 .tag:focus {
-    outline: 0;
+    outline: none;
 }
 
 .vibes {
@@ -110,7 +77,7 @@
     scroll-margin-bottom: 40vh;
     border-bottom: 1px solid rgb(182, 182, 182);
     padding-bottom: 40px;
-    background: linear-gradient(224deg, #ff8661, #fc90ba, #9cd2ff, #f5a2a2);
+    background: linear-gradient(224deg, #ffb6a0, #ffaccc, #96e3ff, #ffb8b8);
     background-size: 800% 800%;
 
     -webkit-animation: VibesGradient 39s ease infinite;

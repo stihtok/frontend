@@ -105,7 +105,7 @@ function VibesPage() {
         <Row id="start" className="justify-content-center animated vibes center">
           <Col xs="auto" md="5" lg="4" xl="5">
               {vibes.map((tag, id) => {
-                return <a onClick={() => handleTagClick(tag.id)} className={`tag ${selectedVibes.includes(tag.id) ? 'selected' : ''}`}><span className="tag-label">{tag.title}</span></a>
+                return <a onClick={() => handleTagClick(tag.id)} className={`tag ${selectedVibes.includes(tag.id) ? 'selected' : ''}`}>{tag.title}</a>
               })
             }
           </Col>
