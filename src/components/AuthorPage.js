@@ -88,7 +88,7 @@ function AuthorPage() {
       <Container fluid>
       <Animation>
         <Row className="justify-content-center animated">
-          <Col xs="auto" md="5" lg="4" xl="4">
+          <Col xs="auto" md="6" lg="5" xl="4">
               <PageContent />
           </Col>
         </Row>

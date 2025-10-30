@@ -75,10 +75,10 @@ function AuthorStihList(props) {
 
   return (
     <div>
+        <div className="filterDiv"><Filter onChangeFunc={onChangeFunc} /></div>
         <div className="authorVibes">
             <VibesList />
         </div>
-        <div className="filterDiv"><Filter onChangeFunc={onChangeFunc} /></div>
         <div className="authorStihList">
         {stihs
           .filter(stih => stih.title.toString().toLowerCase().includes(searchString.toLowerCase()))
