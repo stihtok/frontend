@@ -104,8 +104,18 @@ function VibesPage() {
       <Animation>
         <Row id="start" className="justify-content-center animated vibes center">
           <Col xs="auto" md="5" lg="4" xl="5">
-              {vibes.map((tag, id) => {
-                return <a onClick={() => handleTagClick(tag.id)} className={`tag ${selectedVibes.includes(tag.id) ? 'selected' : ''}`}>{tag.title}</a>
+              {vibes.map((tag) => {
+                return (
+                  <button
+                    type="button"
+                    key={tag.id}
+                    onClick={() => handleTagClick(tag.id)}
+                    className={`tag ${selectedVibes.includes(tag.id) ? 'selected' : ''}`}
+                    aria-pressed={selectedVibes.includes(tag.id)}
+                  >
+                    {tag.title}
+                  </button>
+                )
               })
             }
           </Col>
