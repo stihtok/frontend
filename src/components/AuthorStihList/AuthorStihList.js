@@ -1,4 +1,5 @@
 import "./AuthorStihList.css";
+import "../VibesPage.css";
 import AuthorStihTitle from "./AuthorStihTitle";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -58,16 +59,15 @@ function AuthorStihList(props) {
       return(
         vibes.map((vibe) => {
         return (
-          <span>
-            <label key={vibe.id}>
-                  <input
-                    type="checkbox"
-                    checked={selectedVibes.includes(vibe.id)}
-                    onChange={() => onChangeVibesFunc(vibe.id)}
-                  />
-            <span className="vibeTitle">{vibe.title}</span>
-            </label>
-          </span>
+          <button
+            type="button"
+            key={vibe.id}
+            onClick={() => onChangeVibesFunc(vibe.id)}
+            className={`tag ${selectedVibes.includes(vibe.id) ? 'selected' : ''}`}
+            aria-pressed={selectedVibes.includes(vibe.id)}
+          >
+            {vibe.title}
+          </button>
         )
       })
       )
@@ -75,7 +75,9 @@ function AuthorStihList(props) {
 
   return (
     <div>
-        <VibesList />
+        <div className="authorVibes">
+            <VibesList />
+        </div>
         <div className="filterDiv"><Filter onChangeFunc={onChangeFunc} /></div>
         <div className="authorStihList">
         {stihs

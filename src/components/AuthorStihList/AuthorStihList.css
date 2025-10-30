@@ -34,3 +34,12 @@
 .authorStihTitle p {
     display: inline
 }
+
+/* Smaller tag chips for the author's vibes list */
+.authorVibes .tag {
+    font-size: 16px;
+    line-height: 32px;
+    min-height: 30px;
+    padding: 0 14px 0 14px;
+    margin: 6px;
+}
