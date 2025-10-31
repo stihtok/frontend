@@ -1,5 +1,6 @@
 import "./MainApp.css";
 import { useState, useEffect } from "react";
+import { db } from "./db";
 import AuthorDesc from "./AuthorDesc/AuthorDesc";
 import AuthorStihList from "./AuthorStihList/AuthorStihList";
 import Container from "react-bootstrap/Container";
@@ -26,6 +27,19 @@ function VibesPage() {
   let [isLoading, setIsLoading] = useState(true);
   let [isError, setIsError] = useState(false);
   let location = useLocation();
+
+  useEffect(() => {
+    async function loadSelectedVibes() {
+      try {
+        const rows = await db.selectedVibes.orderBy("id").toArray();
+        const ids = rows.map(r => r.vibeId);
+        setSelectedVibes(ids);
+      } catch (e) {
+        // ignore db errors
+      }
+    }
+    loadSelectedVibes();
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,17 +81,24 @@ function VibesPage() {
 
   if (isError) return <ErrorPage />
 
-  function handleTagClick(vibeId) {
-
-      setSelectedVibes(prev => {
+  async function handleTagClick(vibeId) {
+    setSelectedVibes(prev => {
       if (prev.includes(vibeId)) {
-        // Удаляем тег, если он уже выбран
         return prev.filter(id => id !== vibeId);
       } else {
-        // Добавляем тег
         return [...prev, vibeId];
       }
     });
+    try {
+      const exists = await db.selectedVibes.get({ vibeId });
+      if (exists) {
+        await db.selectedVibes.where("vibeId").equals(vibeId).delete();
+      } else {
+        await db.selectedVibes.add({ vibeId });
+      }
+    } catch (e) {
+      // ignore db errors
+    }
   }
 
   function Feed() {
