@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Navigation.css';
 import Search from './Search';
 import { NavLink } from 'react-router-dom';
@@ -8,6 +8,7 @@ function Navigation(props) {
     let [menu, setMenu] = useState(false);
     let navigate = useNavigate();
     let location = useLocation();
+    let overlayRef = useRef(null);
 
     function openClose() {
         setMenu(current => !current);
@@ -28,15 +29,30 @@ function Navigation(props) {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (menu && overlayRef.current) {
+      // Добавляем класс "active" с небольшой задержкой, чтобы transition сработал
+      requestAnimationFrame(() => {
+        if (overlayRef.current) {
+          overlayRef.current.classList.add('active');
+        }
+      });
+    } else if (overlayRef.current) {
+      overlayRef.current.classList.remove('active');
+    }
+  }, [menu]);
+
     return (
         <nav role="navigation">
         <div id="menuToggle">
             <input checked={menu} type="checkbox" autoComplete='off' onChange={e => openClose()}/>
-            
+            <div ref={overlayRef} className="menuOverlay" onClick={() => setMenu(false)}></div>
+
             <span></span>
             <span></span>
             <span></span>
             
+
             <ul id="menu">
             <li style={{marginBottom: "40px"}}><Search /></li>
             <NavLink onClick={e => navClick("/")}><li>Главная</li></NavLink>

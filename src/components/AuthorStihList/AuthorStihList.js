@@ -29,6 +29,8 @@ function AuthorStihList(props) {
         return [...prev, vibeId];
       }
     });
+    // Collapse all expanded poems when vibe selection changes
+    setExpandedIds(new Set());
   };
 
   useEffect(() => {

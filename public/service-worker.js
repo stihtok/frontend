@@ -24,6 +24,9 @@
         'cdn.jsdelivr.net'
     ]
 
+    // Bump this to invalidate old caches after deploys
+    const CACHE_NAME = 'pwa-cache-v2'
+
     // The Util Function to hack URLs of intercepted requests
     const getFixedUrl = (req) => {
         var now = Date.now()
@@ -46,14 +49,27 @@
         return url.href
     }
 
+    // Ensure the new Service Worker activates immediately after install
+    self.addEventListener('install', (event) => {
+      self.skipWaiting()
+    })
+
     /**
      *  @Lifecycle Activate
-     *  New one activated when old isnt being used.
-     *
-     *  waitUntil(): activating ====> activated
+     *  Clean old caches and take control of clients.
      */
     self.addEventListener('activate', event => {
-      event.waitUntil(self.clients.claim())
+      event.waitUntil(
+        (async () => {
+          const cacheNames = await caches.keys()
+          await Promise.all(
+            cacheNames
+              .filter((name) => name !== CACHE_NAME)
+              .map((name) => caches.delete(name))
+          )
+          await self.clients.claim()
+        })()
+      )
     })
 
     /**
@@ -65,27 +81,40 @@
     self.addEventListener('fetch', event => {
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
-        // Stale-while-revalidate
-        // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
-        // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
+        // Network-first for HTML navigations to avoid serving stale index.html
+        const acceptHeader = event.request.headers.get('accept') || ''
+        const isNavigation = event.request.mode === 'navigate' || acceptHeader.includes('text/html')
+
+        if (isNavigation) {
+          event.respondWith(
+            fetch(getFixedUrl(event.request), { cache: 'no-store' })
+              .then((resp) => {
+                // Update cache in background but do not block response
+                event.waitUntil(
+                  caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resp.clone())).catch(() => {})
+                )
+                return resp
+              })
+              .catch(() => caches.match(event.request))
+          )
+          return
+        }
+
+        // Stale-while-revalidate for same-origin assets
         const cached = caches.match(event.request)
         const fixedUrl = getFixedUrl(event.request)
         const fetched = fetch(fixedUrl, { cache: 'no-store' })
         const fetchedCopy = fetched.then(resp => resp.clone())
 
-        // Call respondWith() with whatever we get first.
-        // If the fetch fails (e.g disconnected), wait for the cache.
-        // If there’s nothing in cache, wait for the fetch.
-        // If neither yields a response, return offline pages.
         event.respondWith(
-        Promise.race([fetched.catch(_ => cached), cached])
+          Promise.race([fetched.catch(_ => cached), cached])
             .then(resp => resp || fetched)
             .catch(_ => { /* eat any errors */ })
         )
 
         // Update the cache with the version we fetched (only for ok status)
         event.waitUntil(
-        Promise.all([fetchedCopy, caches.open("pwa-cache")])
+          Promise.all([fetchedCopy, caches.open(CACHE_NAME)])
             .then(([response, cache]) => response.ok && cache.put(event.request, response))
             .catch(_ => { /* eat any errors */ })
         )
