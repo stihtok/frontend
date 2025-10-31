@@ -4,6 +4,23 @@
     will-change: opacity;
 }
 
+.authorStihItem {
+    margin-bottom: 0px;
+}
+
+.stihCollapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+.stihCollapsible.open {
+    max-height: 5000px;
+    opacity: 1;
+    transition: max-height 0.8s ease-in, opacity 0.3s ease-in;
+}
+
 .authorStihTitle {
     overflow: visible;
     width: 100%;
@@ -31,11 +48,15 @@
     border-bottom: 2px solid #000;
 }
 
+.authorStihTitle a.expanded {
+    color: #c6c4c4;
+    border-bottom-color: #c6c4c4;
+}
+
 .authorStihTitle p {
     display: inline
 }
 
-/* Smaller tag chips for the author's vibes list */
 .authorVibes .tag {
     font-size: 16px;
     line-height: 32px;

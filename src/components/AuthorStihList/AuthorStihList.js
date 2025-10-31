@@ -1,6 +1,7 @@
 import "./AuthorStihList.css";
 import "../VibesPage.css";
 import AuthorStihTitle from "./AuthorStihTitle";
+import Stih from "../Stih/Stih";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ky from "ky";
@@ -13,6 +14,7 @@ function AuthorStihList(props) {
   let [isLoading, setIsLoading] = useState(true);
   let [selectedVibes, setSelectedVibes] = useState([])
   let [vibes, setVibes] = useState([]);
+  let [expandedIds, setExpandedIds] = useState(new Set());
 
   const onChangeFunc = (e) => {
     const { value } = e.target;
@@ -55,6 +57,18 @@ function AuthorStihList(props) {
     });
   }, []);
 
+  const toggleExpand = (id) => {
+    setExpandedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
   function VibesList() {
       return(
         vibes.map((vibe) => {
@@ -89,9 +103,13 @@ function AuthorStihList(props) {
             return selectedVibes.every(id => stihTagIds.includes(id));
           })
           .map((stih) => {
-          return (
-            <div id={stih.id} key={stih.id}>
-              <AuthorStihTitle id={stih.id} title={stih.title} />
+            const isExpanded = expandedIds.has(stih.id);
+            return (
+            <div id={stih.id} key={stih.id} className="authorStihItem">
+              <AuthorStihTitle id={stih.id} title={stih.title} onClick={() => toggleExpand(stih.id)} isExpanded={isExpanded} />
+              <div className={`stihCollapsible ${isExpanded ? 'open' : ''}`} aria-hidden={!isExpanded}>
+                <Stih stih={stih} />
+              </div>
             </div>
           )
         })

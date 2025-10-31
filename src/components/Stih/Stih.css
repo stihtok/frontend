@@ -10,3 +10,7 @@
   font-family: NotoSerif, serif;
   will-change: opacity;
 }
+
+.stihCollapsible .stih {
+  padding-bottom: 5vh;
+}
