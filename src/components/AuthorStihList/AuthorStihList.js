@@ -105,7 +105,7 @@ function AuthorStihList(props) {
           .map((stih) => {
             const isExpanded = expandedIds.has(stih.id);
             return (
-            <div id={stih.id} key={stih.id} className="authorStihItem">
+            <div id={stih.id} key={stih.id} className={`authorStihItem ${isExpanded ? 'expanded' : ''}`}>
               <AuthorStihTitle id={stih.id} title={stih.title} onClick={() => toggleExpand(stih.id)} isExpanded={isExpanded} />
               <div className={`stihCollapsible ${isExpanded ? 'open' : ''}`} aria-hidden={!isExpanded}>
                 <Stih stih={stih} />
