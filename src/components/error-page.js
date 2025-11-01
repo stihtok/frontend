@@ -24,7 +24,8 @@ export default function ErrorPage() {
             <Row className="justify-content-center">
               <Col xs="auto">
                   <h1 style={{textAlign: "center"}}>Ой!</h1>
-                  <p>Что-то пошло не так</p>
+                  <p>Случилась ошибка</p>
+
               </Col>
             </Row>
       </Container>

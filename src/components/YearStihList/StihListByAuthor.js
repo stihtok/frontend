@@ -1,6 +1,6 @@
 import "./YearStihList.css";
 import Author from "../Stih/Author/Author";
-import AuthorStihTitle from "../AuthorStihList/AuthorStihTitle";
+import YearStihTitle from "./YearStihTitle";
 
 function StihListByAuthor(props) {
   return (
@@ -15,7 +15,7 @@ function StihListByAuthor(props) {
       <div>
       {props.stihs.map((stih) => {
         return (
-          <AuthorStihTitle id={stih.id} title={stih.title} />
+          <YearStihTitle id={stih.id} title={stih.title} />
         )
       })
     }

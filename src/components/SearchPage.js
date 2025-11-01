@@ -60,7 +60,7 @@ function AuthorFeedPage() {
             <BackButton />
             <Navigation />
             <div className="searchQuery center"><h2>Поиск:  <i>'{searchQuery.get('q')}'</i></h2></div>
-            {isLoading ? <Loading /> : <SearchOutput />}
+            {isLoading ? <Loading /> : (searchObjects.length === 0 ? <div className="center error-page"><p>Ничего не нашлось...</p></div> : <SearchOutput />)}
           </Col>
       </Container>
     </div>
