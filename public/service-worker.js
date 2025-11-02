@@ -81,42 +81,37 @@
     self.addEventListener('fetch', event => {
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
-        // Network-first for HTML navigations to avoid serving stale index.html
-        const acceptHeader = event.request.headers.get('accept') || ''
-        const isNavigation = event.request.mode === 'navigate' || acceptHeader.includes('text/html')
-
-        if (isNavigation) {
-          event.respondWith(
-            fetch(getFixedUrl(event.request), { cache: 'no-store' })
-              .then((resp) => {
-                // Update cache in background but do not block response
-                event.waitUntil(
-                  caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resp.clone())).catch(() => {})
-                )
-                return resp
-              })
-              .catch(() => caches.match(event.request))
-          )
-          return
-        }
-
-        // Stale-while-revalidate for same-origin assets
-        const cached = caches.match(event.request)
-        const fixedUrl = getFixedUrl(event.request)
-        const fetched = fetch(fixedUrl, { cache: 'no-store' })
-        const fetchedCopy = fetched.then(resp => resp.clone())
-
+        // Cache-first strategy: check cache first, then network
         event.respondWith(
-          Promise.race([fetched.catch(_ => cached), cached])
-            .then(resp => resp || fetched)
-            .catch(_ => { /* eat any errors */ })
-        )
+          caches.match(event.request)
+            .then((cachedResponse) => {
+              // If found in cache, return it
+              if (cachedResponse) {
+                return cachedResponse
+              }
 
-        // Update the cache with the version we fetched (only for ok status)
-        event.waitUntil(
-          Promise.all([fetchedCopy, caches.open(CACHE_NAME)])
-            .then(([response, cache]) => response.ok && cache.put(event.request, response))
-            .catch(_ => { /* eat any errors */ })
+              // Otherwise, fetch from network
+              return fetch(getFixedUrl(event.request), { cache: 'no-store' })
+                .then((networkResponse) => {
+                  // Only cache successful responses
+                  if (networkResponse && networkResponse.status === 200) {
+                    const responseToCache = networkResponse.clone()
+                    event.waitUntil(
+                      caches.open(CACHE_NAME)
+                        .then((cache) => cache.put(event.request, responseToCache))
+                        .catch(() => { /* eat any errors */ })
+                    )
+                  }
+                  return networkResponse
+                })
+                .catch(() => {
+                  // If network fails and no cache, return a basic error response
+                  return new Response('Offline', {
+                    status: 408,
+                    statusText: 'Request Timeout'
+                  })
+                })
+            })
         )
     }
     })
