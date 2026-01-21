@@ -129,7 +129,7 @@ function FortunePage() {
                 </div>
                 <div className="fortuneAgainButtonContainer">
                     <button className="fortuneAgainButton" onClick={handleGuessAgain}>
-                            Еще раз
+                            Ещё раз
                     </button>
                 </div>
               </div>
