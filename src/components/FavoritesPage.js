@@ -7,7 +7,6 @@ import BackButton from "./Parts/BackButton";
 import Navigation from "./Parts/Navigation";
 import { db } from "./db";
 import { useState, useEffect } from "react";
-import ky from "ky";
 import Stih from "./Stih/Stih";
 import Loading from "./Loading";
 import "./Stih/Like/Like.css";
@@ -15,45 +14,41 @@ import arrow from './img/arrow.svg';
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
 import Animation from "./Animation";
+import { color } from "framer-motion";
 
 function FavoritesPage() {
-  let [likes, setLikes] = useState([]);
   let [likeStihs, setLikeStihs] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
   let [isError, setIsError] = useState(false);
   let location = useLocation();
 
-  function getStihsFromApi() {
-    likes.map(({stihId, id}) => {
-      ky
-      .get("/api/stih/" + stihId, { timeout: 20000 })
-      .json()
-      .then((response) => {
-        setLikeStihs(oldLikeStihs => [...oldLikeStihs, response]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-    })
-    setIsLoading(false)
-  }
-
-  async function getLikesFromIndexedDb() {
-    const allItems = await db.likes.orderBy("id").reverse().toArray();
-    setLikes(allItems);
+  async function getStihsFromDb() {
+    try {
+      const rows = await db.likes.toArray();
+      const items = rows
+        .filter((x) => x && x.stih)
+        .sort((a, b) => (b.likedAt || 0) - (a.likedAt || 0))
+        .map((x) => x.stih);
+      setLikeStihs(items);
+    } catch (e) {
+      console.log(e);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function LikeStihsFeed() {
-    if (likes.length === 0) {
+    if (likeStihs.length === 0) {
       return (<Row className="justify-content-center">
                   <Col xs="auto">
                   <div style={{marginTop:"50px", textAlign: "center"}} className="message"><h2 className="center">Здесь пока пусто</h2>
-                  <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "center"}}>Добавляйте стихи в избранное,<br />загибая уголки</p></div>
+                  <p style={{marginBottom:"5px", marginTop:"50px", textAlign: "center"}}>Добавляйте стихи в избранное,<br />загибая уголки.</p></div>
                   <div style={{textAlign:"right", marginRight:"20px"}}><img style={{rotate: "-3deg"}} src={arrow} alt="arrow" /></div>
                   <div style={{marginTop:"5px"}} className="like-root">
                       <input type="checkbox" autoComplete='off' />
                       <div className="like-triangle"><div className="like-triangle-inner"></div></div>
+                      <div className="message" style={{marginBottom:"5px", marginTop:"50px", textAlign: "center"}}><p><span style={{color:"red"}}>*</span> их можно будет читать,<br />даже когда нет интернета</p></div>
                   </div>
           </Col>
         </Row>)
@@ -61,7 +56,7 @@ function FavoritesPage() {
     return (
       likeStihs.map((stih, id) => {
       return (
-        <Row className="justify-content-center page">
+        <Row key={stih?.id ?? id} className="justify-content-center page">
           <Col xs="auto">
             <Stih stih={stih} />
           </Col>
@@ -73,12 +68,8 @@ function FavoritesPage() {
   }
 
   useEffect(() => {
-    getLikesFromIndexedDb();
+    getStihsFromDb();
   }, []);
-
-  useEffect(() => {
-    getStihsFromApi();
-  }, [likes]);
 
   if (isError) return <ErrorPage />
 

@@ -16,7 +16,7 @@ const Stih = forwardRef((props, ref) => {
         <Epigraph epigraph={props.stih.epigraph}/>
         <Body body={props.stih.body} highlight={props.highlight}/>
         <Date date={props.stih.createdAt} />
-        <Like id={props.stih.id}/>
+        <Like id={props.stih.id} stih={props.stih} />
     </div>
   );
 }

@@ -8,9 +8,17 @@ function Like(props) {
     let [ like, setLike ] = useState(false)
 
     async function getDefaultLikeState(stihId) {
-        const likeInDb = await db.likes.get({stihId:stihId})
+        const likeInDb = await db.likes.get({stihId: stihId});
         if (likeInDb) {
             setLike(true);
+            // Backfill full stih if absent
+            if (!likeInDb.stih && props.stih) {
+                await db.likes.put({
+                    ...likeInDb,
+                    stih: props.stih,
+                    likedAt: likeInDb.likedAt || Date.now(),
+                });
+            }
         } else {
             setLike(false);
         }
@@ -24,7 +32,11 @@ function Like(props) {
         try {
             if (likeStatus) {
                 setLike(true);
-                await db.likes.add({"stihId": stihId});
+                await db.likes.put({
+                    stihId: stihId,
+                    stih: props.stih ?? null,
+                    likedAt: Date.now(),
+                });
                 ky.get("/api/stih/" + stihId + "/like", { timeout: 20000 })
                 .catch((error) => {
                     console.log("Like not sent")

@@ -49,6 +49,13 @@
         return url.href
     }
 
+    // Allow the page to ask the SW to activate immediately (used by sw-register.js).
+    self.addEventListener('message', (event) => {
+      if (event && event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting()
+      }
+    })
+
     // Ensure the new Service Worker activates immediately after install
     self.addEventListener('install', (event) => {
       self.skipWaiting()
@@ -79,18 +86,46 @@
      *  void respondWith(Promise<Response> r)
      */
     self.addEventListener('fetch', event => {
+    // Network-first for navigations (HTML). This prevents the classic "new deploy doesn't show up"
+    // issue where index.html/app shell is served from cache.
+    if (event.request.mode === 'navigate') {
+      event.respondWith(
+        (async () => {
+          try {
+            const networkResponse = await fetch(getFixedUrl(event.request), { cache: 'no-store' })
+            const cache = await caches.open(CACHE_NAME)
+            cache.put(event.request, networkResponse.clone()).catch(() => {})
+            return networkResponse
+          } catch (e) {
+            const cached = await caches.match(event.request)
+            return cached || new Response('Offline', { status: 408, statusText: 'Request Timeout' })
+          }
+        })()
+      )
+      return
+    }
+
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
-        // Cache-first strategy: check cache first, then network
+        // Stale-while-revalidate for assets: serve cache if present, refresh in background.
         event.respondWith(
           caches.match(event.request)
             .then((cachedResponse) => {
-              // If found in cache, return it
               if (cachedResponse) {
+                event.waitUntil(
+                  fetch(getFixedUrl(event.request), { cache: 'no-store' })
+                    .then((networkResponse) => {
+                      if (networkResponse && networkResponse.status === 200) {
+                        return caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse))
+                      }
+                      return undefined
+                    })
+                    .catch(() => {})
+                )
                 return cachedResponse
               }
 
-              // Otherwise, fetch from network
+              // Otherwise, fetch from network (and cache).
               return fetch(getFixedUrl(event.request), { cache: 'no-store' })
                 .then((networkResponse) => {
                   // Only cache successful responses
