@@ -14,7 +14,7 @@ import arrow from './img/arrow.svg';
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
 import Animation from "./Animation";
-import { color } from "framer-motion";
+import ky from "ky";
 
 function FavoritesPage() {
   let [likeStihs, setLikeStihs] = useState([]);
@@ -22,14 +22,37 @@ function FavoritesPage() {
   let [isError, setIsError] = useState(false);
   let location = useLocation();
 
-  async function getStihsFromDb() {
+  async function getStihsForFavoritesFeed() {
     try {
-      const rows = await db.likes.toArray();
-      const items = rows
-        .filter((x) => x && x.stih)
-        .sort((a, b) => (b.likedAt || 0) - (a.likedAt || 0))
-        .map((x) => x.stih);
-      setLikeStihs(items);
+      // Backward compatible:
+      // - New likes: stored as { stihId, stih, likedAt } in indexedDB
+      // - Old likes: stored as { stihId } only -> fetch from API as before
+      const rows = await db.likes.orderBy("id").reverse().toArray();
+
+      const result = [];
+      for (const row of rows) {
+        if (row?.stih) {
+          result.push(row.stih);
+          continue;
+        }
+
+        // Old record: fetch from API (may fail offline)
+        try {
+          const response = await ky.get("/api/stih/" + row.stihId, { timeout: 20000 }).json();
+          result.push(response);
+          // backfill cache for offline usage next time
+          await db.likes.put({
+            ...row,
+            stih: response,
+            likedAt: row.likedAt || Date.now(),
+          });
+        } catch (e) {
+          console.log(e);
+          // If offline / API failed, just skip this item (can't render without text)
+        }
+      }
+
+      setLikeStihs(result);
     } catch (e) {
       console.log(e);
       setIsError(true);
@@ -68,7 +91,7 @@ function FavoritesPage() {
   }
 
   useEffect(() => {
-    getStihsFromDb();
+    getStihsForFavoritesFeed();
   }, []);
 
   if (isError) return <ErrorPage />
