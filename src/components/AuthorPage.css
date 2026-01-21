@@ -1,0 +1,154 @@
+.guessButton {
+  background-color: #f6f6f6;
+  border: 1px solid #c6c4c4;
+  border-radius: 30px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 38px;
+  padding: 0 25px 0 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  min-height: 38px;
+  transition: all 0.2s ease;
+  font-family: 'Roboto';
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.guessButton:hover {
+  background-color: #f6f6f6;
+  text-decoration: none;
+  border: 1px solid #8b5cf6;
+  color: #000000;
+  opacity: 1;
+}
+
+.guessButton:focus {
+  outline: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.8s ease-in;
+}
+
+.guessMode .authorDesc .descText {
+  display: none;
+}
+
+.guessMode .authorDesc {
+  margin-bottom: 20px;
+}
+
+.guessMode {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.List.guessModeList {
+  height: 100vh;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.guessContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  max-height: calc(100vh - 250px);
+  overflow: hidden;
+  opacity: 0;
+}
+
+.guessLine {
+  font-family: NotoSerif, serif;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.guessLineMain {
+  font-family: NotoSerif, serif;
+  font-size: 1.5em;
+  line-height: 1.8;
+  margin: 15px 0;
+  padding: 0 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.guessLineNeighbor {
+  font-family: NotoSerif, serif;
+  font-size: 0.85em;
+  line-height: 1.4;
+  color: #888888;
+  margin: 3px 0;
+  padding: 0 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.guessAgainButton {
+  background-color: #f6f6f6;
+  border: 1px solid #c6c4c4;
+  border-radius: 30px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 38px;
+  padding: 0 25px 0 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  min-height: 38px;
+  transition: all 0.2s ease;
+  font-family: 'Roboto';
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.guessAgainButton:hover {
+  background-color: #f6f6f6;
+  text-decoration: none;
+  border: 1px solid #595959;
+  color: #000000;
+  opacity: 1;
+}
+
+.guessAgainButton:focus {
+  outline: 0;
+}
+

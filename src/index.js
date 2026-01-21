@@ -13,6 +13,7 @@ import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
 import InstallPage from "./components/InstallPage";
 import VibesPage from "./components/VibesPage";
+import FortunePage from "./components/FortunePage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
   {
     path: "/author/:authorId/feed",
     element: <AuthorFeedPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/author/:authorId/fortune",
+    element: <FortunePage />,
     errorElement: <ErrorPage />,
   },
   {
