@@ -71,5 +71,11 @@ body::selection {
   background-color: #ffe66a;
 }
 
+::-moz-selection {
+  color: rgb(0, 0, 0);
+  background-color: #ffe66a;
+}
+
+
 
 
