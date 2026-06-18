@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Navigation(props) {
     let [menu, setMenu] = useState(false);
     let [isPwa, setIsPwa] = useState(false);
+    let [isAppDomain, setIsAppDomain] = useState(false);
     let navigate = useNavigate();
     let location = useLocation();
     let overlayRef = useRef(null);
@@ -31,8 +32,9 @@ function Navigation(props) {
   }, [location]);
 
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && /PWA/i.test(navigator.userAgent)) {
-      setIsPwa(true);
+    if (typeof window !== 'undefined') {
+      if (typeof navigator !== 'undefined' && /PWA/i.test(navigator.userAgent)) setIsPwa(true);
+      if (window.location.hostname === 'app.stihtok.ru') setIsAppDomain(true);
     }
   }, []);
 
@@ -66,7 +68,7 @@ function Navigation(props) {
             <NavLink onClick={e => navClick("/authors")}><li>Авторы</li></NavLink>
             <NavLink onClick={e => navClick("/favorites")}><li>Уголки</li></NavLink>
             <NavLink onClick={e => navClick("/vibes#start")}><li>Настроения</li></NavLink>
-            {!isPwa && (
+            {!isPwa && !isAppDomain && (
               <>
                 <hr className='navHr'/>
                 <a className='installLink' href="/install"><li>Приложение</li></a>
