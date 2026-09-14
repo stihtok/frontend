@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ky from "ky";
-import { createRef, useRef } from "react";
+import { useRef } from "react";
 import Navigation from "./Parts/Navigation";
 import ErrorPage from "./error-page";
 import { useLocation } from "react-router-dom";
@@ -14,7 +14,7 @@ import Animation from "./Animation";
 
 function MainApp() {
   let [bundle, setBundle] = useState([]);
-  let lastItem = createRef();
+  let lastItem = useRef(null);
   let observerLoader = useRef();
   let [isError, setIsError] = useState(false);
   let location = useLocation();
@@ -24,9 +24,7 @@ function MainApp() {
     ky.get("/api/bundle/", { timeout: 20000 })
     .json()
     .then (response => {
-      let newBundle = []
-      newBundle = [...bundle, ...response];
-      setBundle(newBundle);
+      setBundle(prev => [...prev, ...response]);
     })
     .catch((error) => {
       console.log(error);
@@ -61,7 +59,7 @@ function MainApp() {
     if (lastItem.current) {
       observerLoader.current.observe(lastItem.current);
     }
-  }, [lastItem]);
+  }, [bundle]);
 
   if (isError) return <ErrorPage />
 
@@ -71,23 +69,10 @@ function MainApp() {
         <Container fluid>
         <Animation>
           {bundle.map((stih, index) => {
-            if (index + 1 === bundle.lenght) {
-              return (
-                <Row
-                  key={stih.id}
-                  ref={lastItem}
-                  className="justify-content-center page"
-                >
-                  <Col xs="auto">
-                    <Stih stih={stih} />
-                  </Col>
-                </Row>
-              );
-            }
             return (
               <Row
                 key={stih.id}
-                ref={lastItem}
+                ref={index + 1 === bundle.length ? lastItem : null}
                 className="justify-content-center page"
               >
                 <Col xs="auto">
