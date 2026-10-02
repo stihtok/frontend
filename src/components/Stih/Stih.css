@@ -13,4 +13,9 @@
 
 .stihCollapsible .stih {
   padding-bottom: 5vh;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
