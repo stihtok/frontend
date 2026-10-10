@@ -9,16 +9,21 @@
 }
 
 .stihCollapsible {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-out, opacity 0.3s ease-out;
     opacity: 0;
 }
 
+.stihCollapsibleContent {
+    min-height: 0;
+    overflow: hidden;
+}
+
 .stihCollapsible.open {
-    max-height: 5000px;
+    grid-template-rows: 1fr;
     opacity: 1;
-    transition: max-height 0.8s ease-in, opacity 0.3s ease-in;
+    transition: grid-template-rows 0.8s ease-in, opacity 0.3s ease-in;
 }
 
 .authorStihTitle {

@@ -110,7 +110,9 @@ function AuthorStihList(props) {
             <div id={stih.id} key={stih.id} className={`authorStihItem ${isExpanded ? 'expanded' : ''}`}>
               <AuthorStihTitle id={stih.id} title={stih.title} onClick={() => toggleExpand(stih.id)} isExpanded={isExpanded} />
               <div className={`stihCollapsible ${isExpanded ? 'open' : ''}`} aria-hidden={!isExpanded}>
-                <Stih stih={stih} />
+                <div className="stihCollapsibleContent">
+                  <Stih stih={stih} />
+                </div>
               </div>
             </div>
           )

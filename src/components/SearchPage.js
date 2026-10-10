@@ -12,27 +12,39 @@ import Stih from "./Stih/Stih";
 import "./SearchPage.css";
 import Loading from "./Loading";
 import AuthorDesc from "./AuthorDesc/AuthorDesc";
-import { useLocation } from "react-router-dom";
 
 function AuthorFeedPage() {
   let [searchQuery] = useSearchParams();
   let [searchObjects, setSearchObjects] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
-  let location = useLocation();
+  const query = searchQuery.get("q") || "";
 
   useEffect(() => {
+    const controller = new AbortController();
+    if (!query.trim()) {
+      setSearchObjects([]);
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
+    setSearchObjects([]);
     ky
-      .get("/api/search/" + searchQuery.get('q'), { timeout: 20000 })
+      .get("/api/search/" + encodeURIComponent(query.trim()), {
+        timeout: 20000,
+        signal: controller.signal,
+      })
       .json()
       .then(response => {
-        setSearchObjects(response);
+        if (!controller.signal.aborted) setSearchObjects(response);
       })
-      .finally(() => setIsLoading(false))
-      .catch((error) => {
-        console.log(error)
+      .catch(error => {
+        if (!controller.signal.aborted) console.log(error);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setIsLoading(false);
       });
-  }, []);
+    return () => controller.abort();
+  }, [query]);
 
   function SearchOutput() {
     return (searchObjects.map((object, id) => {
